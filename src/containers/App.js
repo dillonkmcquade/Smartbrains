@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 //import FaceRecognition from '../components/FaceRecognition';
-//import ImageLinkForm from '../components/ImageLinkForm';
-import Logo from '../components/Logo';
-import Navigation from '../components/Navigation';
+import ImageLinkForm from "../components/ImageLinkForm";
 
+import Navigation from "../components/Navigation";
+import Rank from "../components/Rank";
+import "./App.css";
+import Particles from "react-particles-js";
+import particlesOptions from "./particles";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Particles className="particles" params={particlesOptions} />
         <Navigation />
-        <Logo />
-        {/*<ImageLinkForm />
-        <FaceRecognition />*/}
-      </div>  
+        
+        <Rank />
+        <ImageLinkForm />
+
+        {/*<FaceRecognition />*/}
+      </div>
     );
   }
 }
