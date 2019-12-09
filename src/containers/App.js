@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
+import FaceRecognition from '../components/FaceRecognition';
+import ImageLinkForm from '../components/ImageLinkForm';
+import Logo from '../components/Logo';
+import Navigation from '../components/Navigation';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Hello World</h1>
-      </div>
+      <div lassName="App">
+        <Navigation />
+        {/*<Logo />
+        <ImageLinkForm />
+        <FaceRecognition />*/}
+      </div>  
     );
   }
 }
