@@ -14,7 +14,7 @@ const ImageLinkForm = () => {
           type="text"
           placeholder="Insert image url here.."
         />
-        <button className="f4 w-30 grow link ph3 pv2 dib white bg-light-purple pointer">
+        <button className="f4 w-30 grow link ph3 pv2 dib white bg-green">
           Detect
         </button>
       </div>

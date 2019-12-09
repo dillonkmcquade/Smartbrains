@@ -1,5 +1,3 @@
-import React from 'react';
-
 const particlesOptions = {
   interactivity: {
     detect_on: "canvas",
