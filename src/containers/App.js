@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
-import FaceRecognition from '../components/FaceRecognition';
-import ImageLinkForm from '../components/ImageLinkForm';
+//import FaceRecognition from '../components/FaceRecognition';
+//import ImageLinkForm from '../components/ImageLinkForm';
 import Logo from '../components/Logo';
 import Navigation from '../components/Navigation';
 
@@ -9,10 +8,10 @@ import Navigation from '../components/Navigation';
 class App extends Component {
   render() {
     return (
-      <div lassName="App">
+      <div className="App">
         <Navigation />
-        {/*<Logo />
-        <ImageLinkForm />
+        <Logo />
+        {/*<ImageLinkForm />
         <FaceRecognition />*/}
       </div>  
     );
