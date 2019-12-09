@@ -4,6 +4,6 @@ This project was bootstrapped with Create React App.
 
 Tools used:
 
-https://www.Tachyons.io
+https://www.Tachyons.io - Tachyons 
 
-https://www.npmjs.com/package/react-particles-js
+https://www.npmjs.com/package/react-particles-js - Particles.js
