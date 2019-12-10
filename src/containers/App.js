@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import Clarifai from "clarifai";
 import ImageLinkForm from "../components/ImageLinkForm";
 import Navigation from "../components/Navigation";
 import Rank from "../components/Rank";
 import "./App.css";
 import Particles from "react-particles-js";
 import particlesOptions from "./particles";
-import Clarifai from "clarifai";
+import Signin from "../components/Signin/Signin";
+import Register from "../components/Register/Register";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
@@ -20,7 +22,8 @@ class App extends Component {
     this.state = {
       input: "",
       ingredients: [],
-      imgURL: ""
+      imgURL: "",
+      route: "signin"
     };
   }
 
@@ -50,24 +53,43 @@ class App extends Component {
         });
     }
   };
+  onSignOut = () => {
+    this.setState({ ingredients: [] });
+    this.setState({imgURL: ''})
+  };
+  onRouteChange = route => {
+    this.setState({ route: route });
+    this.onSignOut();
+  };
 
   render() {
     const ingredientData = this.state.ingredients;
-
+    const { onRouteChange, onInputChange, onButtonSubmit } = this;
+    const { imgURL, route } = this.state;
     return (
       <div className="App">
-        {console.log(this.state.imgURL)}
+        {console.log(imgURL)}
         <Particles className="particles" params={particlesOptions} />
-        <Navigation />
-        {/*<Rank ingredients={ingredientlist} />*/}
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <ImageRecognition imageURL={this.state.imgURL} />
-        <Scroll>
-          <IngredientList ingredients={ingredientData} />
-        </Scroll>
+        {route === "home" ? (
+          <div>
+            <Navigation
+              onRouteChange={onRouteChange}
+              onSignOut={this.onSignOut}
+            />
+            <ImageLinkForm
+              onInputChange={onInputChange}
+              onButtonSubmit={onButtonSubmit}
+            />
+            <ImageRecognition imageURL={imgURL} />
+            <Scroll>
+              <IngredientList ingredients={ingredientData} />
+            </Scroll>
+          </div>
+        ) : route === "signin" ? (
+          <Signin onRouteChange={onRouteChange} />
+        ) : (
+          <Register onRouteChange={onRouteChange} />
+        )}
       </div>
     );
   }
