@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Clarifai from "clarifai";
 import ImageLinkForm from "../components/ImageLinkForm";
 import Navigation from "../components/Navigation";
-import Rank from "../components/Rank";
 import "./App.css";
 import Particles from "react-particles-js";
 import particlesOptions from "./particles";
