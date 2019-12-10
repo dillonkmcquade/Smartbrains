@@ -8,7 +8,7 @@ import particlesOptions from "./particles";
 import Clarifai from "clarifai";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
-import Scroll from '../components/Scroll';
+import Scroll from "../components/Scroll";
 
 const app = new Clarifai.App({
   apiKey: "1d7d2ac1e9164b4c9828d5377acb43e4"
@@ -37,23 +37,26 @@ class App extends Component {
         .predict(Clarifai.FOOD_MODEL, this.state.input)
         .then(
           function(response) {
-            const ingredientz = response.outputs[0].data.concepts;
-            return ingredientz;
+            const foodData = response.outputs[0].data.concepts;
+            console.log(foodData);
+            return foodData;
           },
           function(err) {
             console.log("error");
           }
         )
-        .then(ingredientz => {
-          this.setState({ ingredients: ingredientz });
+        .then(foodData => {
+          this.setState({ ingredients: foodData });
         });
     }
   };
 
   render() {
-    const ingredientlist = this.state.ingredients;
+    const ingredientData = this.state.ingredients;
+
     return (
       <div className="App">
+        {console.log(this.state.imgURL)}
         <Particles className="particles" params={particlesOptions} />
         <Navigation />
         {/*<Rank ingredients={ingredientlist} />*/}
@@ -63,11 +66,10 @@ class App extends Component {
         />
         <ImageRecognition imageURL={this.state.imgURL} />
         <Scroll>
-          <IngredientList ingredients={ingredientlist} />
+          <IngredientList ingredients={ingredientData} />
         </Scroll>
       </div>
     );
   }
 }
-
 export default App;

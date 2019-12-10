@@ -6,11 +6,10 @@ const Scroll = props => {
       style={{
         overflowY: "scroll",
         height: "600px",
-        marginLeft: '400px',
-        marginRight: '400px'
+        display: "flex",
+        justifyContent: "center"
       }}
-      className='pa3'
-    
+      className="pa3"
     >
       {props.children}
     </div>
