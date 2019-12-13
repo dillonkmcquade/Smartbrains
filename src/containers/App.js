@@ -22,10 +22,27 @@ class App extends Component {
       input: "",
       ingredients: [],
       imgURL: "",
-      route: "signin"
+      route: "signin",
+      user: {
+        id: "",
+        name: "",
+        email: "",
+        entries: "",
+        joined: ""
+      }
     };
   }
-  
+
+  loadUser = data => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        joined: data.joined
+      }
+    });
+  };
 
   onInputChange = event => {
     this.setState({ input: event.target.value });
@@ -55,7 +72,7 @@ class App extends Component {
   };
   onSignOut = () => {
     this.setState({ ingredients: [] });
-    this.setState({imgURL: ''})
+    this.setState({ imgURL: "" });
   };
   onRouteChange = route => {
     this.setState({ route: route });
@@ -64,7 +81,7 @@ class App extends Component {
 
   render() {
     const ingredientData = this.state.ingredients;
-    const { onRouteChange, onInputChange, onButtonSubmit } = this;
+    const { onRouteChange, loadUser, onInputChange, onButtonSubmit } = this;
     const { imgURL, route } = this.state;
     return (
       <div className="App">
@@ -88,7 +105,7 @@ class App extends Component {
         ) : route === "signin" ? (
           <Signin onRouteChange={onRouteChange} />
         ) : (
-          <Register onRouteChange={onRouteChange} />
+          <Register onRouteChange={onRouteChange} loadUser={loadUser} />
         )}
       </div>
     );
