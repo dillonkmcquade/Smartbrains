@@ -15,10 +15,7 @@ const app = new Clarifai.App({
   apiKey: "1d7d2ac1e9164b4c9828d5377acb43e4"
 });
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
+const initialState = {
       input: "",
       ingredients: [],
       imgURL: "",
@@ -29,9 +26,13 @@ class App extends Component {
         email: "",
         entries: "",
         joined: ""
-      }
-    };
-  }
+}};
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = initialState
+  };
 
   loadUser = data => {
     this.setState({
@@ -75,7 +76,7 @@ class App extends Component {
     this.setState({ imgURL: "" });
   };
   onRouteChange = route => {
-    this.setState({ route: route });
+    this.setState({route: route});
     this.onSignOut();
   };
 
