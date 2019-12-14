@@ -3,14 +3,21 @@ import Logo from "./Logo";
 
 const Navigation = ({ onRouteChange }) => {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between" }}>
-      <Logo className="pa2" />
-      <p
-        onClick={() => onRouteChange("signin")}
-        className="f3 link dim white underline pa3 pointer"
-      >
-        Sign Out
-      </p>
+    <nav
+      className="dt w-100 border-box"
+      style={{ display: "flex", justifyContent: "space-between" }}
+    >
+      <div className="pa1 dim">
+        <Logo />
+      </div>
+      <div className="ph3">
+        <p
+          onClick={() => onRouteChange("signin")}
+          className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-green pointer"
+        >
+          Sign Out
+        </p>
+      </div>
     </nav>
   );
 };

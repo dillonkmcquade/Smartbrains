@@ -60,7 +60,11 @@ class App extends Component {
         .then(
           function(response) {
             const foodData = response.outputs[0].data.concepts;
-            return foodData;
+            if (response.status.code === 10000) {
+              return foodData;
+            } else {
+              alert("please insert a valid url");
+            }
           },
           function(err) {
             console.log("error");
