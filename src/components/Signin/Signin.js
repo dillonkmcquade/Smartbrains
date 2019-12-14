@@ -16,7 +16,6 @@ class Signin extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
   onSubmitSignIn = () => {
-    console.log(this.state);
     fetch("http://localhost:3000/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -24,14 +23,15 @@ class Signin extends React.Component {
         email: this.state.signInEmail,
         password: this.state.signInPassword
       })
-    }).then(response => response.json())
+    })
+      .then(response => response.json())
       .then(data => {
-        if (data.id){
+        if (data.id) {
           this.props.onRouteChange("home");
-        }else{
-          alert('wrong credentials, try again')
+        } else {
+          alert("wrong credentials, try again");
         }
-      })
+      });
   };
   render() {
     const { onRouteChange } = this.props;
@@ -69,7 +69,7 @@ class Signin extends React.Component {
             <div className="">
               <input
                 onClick={this.onSubmitSignIn}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black br3 bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign in"
               />
@@ -77,9 +77,9 @@ class Signin extends React.Component {
             <div className="lh-copy mt3">
               <p
                 onClick={() => onRouteChange("register")}
-                className="f6 pointer ba-3 link dim black db"
+                className="f5 pointer ba-3 link dim black db"
               >
-                Register
+                Don't have an account?
               </p>
             </div>
           </div>

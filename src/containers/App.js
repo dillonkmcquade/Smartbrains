@@ -16,23 +16,24 @@ const app = new Clarifai.App({
 });
 
 const initialState = {
-      input: "",
-      ingredients: [],
-      imgURL: "",
-      route: "signin",
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: "",
-        joined: ""
-}};
+  input: "",
+  ingredients: [],
+  imgURL: "",
+  route: "signin",
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: "",
+    joined: ""
+  }
+};
 
 class App extends Component {
   constructor() {
     super();
-    this.state = initialState
-  };
+    this.state = initialState;
+  }
 
   loadUser = data => {
     this.setState({
@@ -59,7 +60,6 @@ class App extends Component {
         .then(
           function(response) {
             const foodData = response.outputs[0].data.concepts;
-            console.log(foodData);
             return foodData;
           },
           function(err) {
@@ -76,7 +76,7 @@ class App extends Component {
     this.setState({ imgURL: "" });
   };
   onRouteChange = route => {
-    this.setState({route: route});
+    this.setState({ route: route });
     this.onSignOut();
   };
 
@@ -90,10 +90,7 @@ class App extends Component {
         <Particles className="particles" params={particlesOptions} />
         {route === "home" ? (
           <div>
-            <Navigation
-              onRouteChange={onRouteChange}
-              onSignOut={this.onSignOut}
-            />
+            <Navigation onRouteChange={onRouteChange} />
             <ImageLinkForm
               onInputChange={onInputChange}
               onButtonSubmit={onButtonSubmit}

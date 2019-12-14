@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 
-const Navigation = ({ onRouteChange, onSignOut }) => {
+const Navigation = ({ onRouteChange }) => {
   return (
     <nav style={{ display: "flex", justifyContent: "space-between" }}>
       <Logo className="pa2" />

@@ -34,11 +34,17 @@ class Register extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         } else {
-          alert('error logging in');
+          alert("error logging in");
         }
       });
   };
   render() {
+    const {
+      onNameChange,
+      onEmailChange,
+      onPasswordChange,
+      onSubmitRegister
+    } = this;
     return (
       <article className="mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
         <main className="pa4 black-80">
@@ -50,7 +56,7 @@ class Register extends React.Component {
                   Name
                 </label>
                 <input
-                  onChange={this.onNameChange}
+                  onChange={onNameChange}
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="text"
                   name="name"
@@ -62,7 +68,7 @@ class Register extends React.Component {
                   Email
                 </label>
                 <input
-                  onChange={this.onEmailChange}
+                  onChange={onEmailChange}
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="email"
                   name="email-address"
@@ -74,7 +80,7 @@ class Register extends React.Component {
                   Password
                 </label>
                 <input
-                  onChange={this.onPasswordChange}
+                  onChange={onPasswordChange}
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
                   name="password"
@@ -84,7 +90,7 @@ class Register extends React.Component {
             </fieldset>
             <div className="">
               <input
-                onClick={this.onSubmitRegister}
+                onClick={onSubmitRegister}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Register"

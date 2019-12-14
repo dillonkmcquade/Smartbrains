@@ -9,7 +9,6 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
           "Copy and paste a photo URL of your favorite dish to see what ingredients it contains!"
         }
       </p>
-
       <div className="center mw7 shadow-5 br2 pa3 bbg">
         <form className="f4 pa2 w-70 center">
           <input
@@ -31,5 +30,4 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
     </div>
   );
 };
-
 export default ImageLinkForm;
