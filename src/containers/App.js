@@ -57,7 +57,7 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ loading: true });
     this.setState({ imgURL: this.state.input });
-    fetch("http://localhost:3000/imagedata", {
+    fetch("https://fierce-mountain-50317.herokuapp.com/imagedata", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -124,9 +124,7 @@ class App extends Component {
             </Scroll>
           </div>
         ) : route === "signin" ? (
-          <Signin
-            onRouteChange={onRouteChange}
-          />
+          <Signin onRouteChange={onRouteChange} />
         ) : (
           <Register onRouteChange={onRouteChange} loadUser={loadUser} />
         )}
