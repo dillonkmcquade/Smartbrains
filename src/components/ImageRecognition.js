@@ -5,7 +5,7 @@ const ImageRecognition = ({ imageURL }) => {
   return (
     <div className="ma">
       {!imageURL ? (
-        <Error message={"please include valid URL!"} />
+        console.log("no image provided")
       ) : (
         <div className="relative ba1-white mt4">
           <img alt="foodPhoto" src={imageURL} width="500px" height="auto" />

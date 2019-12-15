@@ -15,20 +15,18 @@ const IngredientList = ({ ingredients }) => {
         <div className="tc pl4 w-50">Ingredient</div>
         <div className="tc pl4 w-50">Probability</div>
       </div>
-      {!ingredients ? (
-        <Error message={"you must include a valid URL!"} />
-      ) : (
-        ingredients.map((id, i) => {
-          return (
-            <div>
-              <Recognition
-                name={ingredients[i].name}
-                value={Math.floor(ingredients[i].value * 100) + "%"}
-              />
-            </div>
-          );
-        })
-      )}
+      {!ingredients
+        ? console.log("no ingredients provided")
+        : ingredients.map((id, i) => {
+            return (
+              <div>
+                <Recognition
+                  name={ingredients[i].name}
+                  value={Math.floor(ingredients[i].value * 100) + "%"}
+                />
+              </div>
+            );
+          })}
       )} ; })}
     </div>
   );

@@ -33,10 +33,9 @@ class Register extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
-        } else {
-          alert("error logging in");
         }
-      });
+      })
+      .catch(console.log);
   };
   render() {
     const {
@@ -61,6 +60,7 @@ class Register extends React.Component {
                   type="text"
                   name="name"
                   id="name"
+                  required
                 />
               </div>
               <div className="mt3">
@@ -73,6 +73,7 @@ class Register extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  required
                 />
               </div>
               <div className="mv3">
@@ -85,6 +86,7 @@ class Register extends React.Component {
                   type="password"
                   name="password"
                   id="password"
+                  required
                 />
               </div>
             </fieldset>

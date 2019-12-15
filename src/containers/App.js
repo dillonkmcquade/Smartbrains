@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Clarifai from "clarifai";
 import ImageLinkForm from "../components/ImageLinkForm";
 import Navigation from "../components/Navigation";
 import "./App.css";
@@ -10,10 +9,6 @@ import Register from "../components/Register/Register";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
-
-const app = new Clarifai.App({
-  apiKey: "1d7d2ac1e9164b4c9828d5377acb43e4"
-});
 
 const initialState = {
   input: "",
@@ -48,32 +43,34 @@ class App extends Component {
 
   onInputChange = event => {
     this.setState({ input: event.target.value });
+    
   };
 
   onButtonSubmit = () => {
     this.setState({ imgURL: this.state.input });
-    if (this.state.input === "") {
-      alert("You must provide a valid URL");
-    } else {
-      app.models
-        .predict(Clarifai.FOOD_MODEL, this.state.input)
-        .then(
-          function(response) {
-            const foodData = response.outputs[0].data.concepts;
-            if (response.status.code === 10000) {
-              return foodData;
-            } else {
-              alert("please insert a valid url");
-            }
-          },
-          function(err) {
-            console.log("error");
+    fetch("http://localhost:3000/imagedata", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input
+      })
+    })
+      .then(response => response.json())
+      .then(
+        function(response) {
+          const foodData = response.outputs[0].data.concepts;
+          if (response.status.code === 10000) {
+            return foodData;
           }
-        )
-        .then(foodData => {
-          this.setState({ ingredients: foodData });
-        });
-    }
+        },
+        function(err) {
+          console.log("error");
+        }
+      )
+      .then(foodData => {
+        this.setState({ ingredients: foodData });
+      })
+      .catch(console.log);
   };
   onSignOut = () => {
     this.setState({ ingredients: [] });
@@ -90,7 +87,6 @@ class App extends Component {
     const { imgURL, route } = this.state;
     return (
       <div className="App">
-        {console.log(imgURL)}
         <Particles className="particles" params={particlesOptions} />
         {route === "home" ? (
           <div>

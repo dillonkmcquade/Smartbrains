@@ -28,10 +28,9 @@ class Signin extends React.Component {
       .then(data => {
         if (data.id) {
           this.props.onRouteChange("home");
-        } else {
-          alert("wrong credentials, try again");
         }
-      });
+      })
+      .catch(console.log);
   };
   render() {
     const { onRouteChange } = this.props;
@@ -51,6 +50,7 @@ class Signin extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  required
                 />
               </div>
               <div className="mv3">
@@ -63,6 +63,7 @@ class Signin extends React.Component {
                   type="password"
                   name="password"
                   id="password"
+                  required
                 />
               </div>
             </fieldset>
