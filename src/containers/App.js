@@ -9,12 +9,21 @@ import Register from "../components/Register/Register";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
+import RingLoader from "react-spinners/RingLoader";
+import { css } from "@emotion/core";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const initialState = {
   input: "",
   ingredients: [],
   imgURL: "",
   route: "signin",
+  loading: false,
   user: {
     id: "",
     name: "",
@@ -43,10 +52,10 @@ class App extends Component {
 
   onInputChange = event => {
     this.setState({ input: event.target.value });
-    
   };
 
   onButtonSubmit = () => {
+    this.setState({ loading: true });
     this.setState({ imgURL: this.state.input });
     fetch("http://localhost:3000/imagedata", {
       method: "post",
@@ -69,13 +78,16 @@ class App extends Component {
       )
       .then(foodData => {
         this.setState({ ingredients: foodData });
+        this.setState({ loading: false });
       })
       .catch(console.log);
   };
+
   onSignOut = () => {
     this.setState({ ingredients: [] });
     this.setState({ imgURL: "" });
   };
+
   onRouteChange = route => {
     this.setState({ route: route });
     this.onSignOut();
@@ -97,11 +109,24 @@ class App extends Component {
             />
             <ImageRecognition imageURL={imgURL} />
             <Scroll>
-              <IngredientList ingredients={ingredientData} />
+              {this.state.loading === true ? (
+                <RingLoader
+                  css={override}
+                  sizeUnit={"px"}
+                  size={150}
+                  color={"#123abc"}
+                  loading={this.state.loading}
+                  className="pa3"
+                />
+              ) : (
+                <IngredientList ingredients={ingredientData} />
+              )}
             </Scroll>
           </div>
         ) : route === "signin" ? (
-          <Signin onRouteChange={onRouteChange} />
+          <Signin
+            onRouteChange={onRouteChange}
+          />
         ) : (
           <Register onRouteChange={onRouteChange} loadUser={loadUser} />
         )}

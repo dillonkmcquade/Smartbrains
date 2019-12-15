@@ -1,6 +1,5 @@
 import React from "react";
 import Recognition from "./Recognition.js";
-import Error from "./Error";
 
 const IngredientList = ({ ingredients }) => {
   return (

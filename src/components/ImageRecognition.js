@@ -1,5 +1,4 @@
 import React from "react";
-import Error from "./Error";
 
 const ImageRecognition = ({ imageURL }) => {
   return (

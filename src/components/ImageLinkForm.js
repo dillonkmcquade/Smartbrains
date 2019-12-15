@@ -6,7 +6,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
       <div>
         <p className="f2 courier light-gray">
           {
-            "Copy and paste a photo URL of your favorite dish to see what ingredients it contains!"
+            "Insert a photo URL of your favorite food to see what ingredients it contains!"
           }
         </p>
       </div>
