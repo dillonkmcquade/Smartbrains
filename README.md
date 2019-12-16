@@ -13,3 +13,5 @@ https://www.npmjs.com/package/react-particles-js - Particles.js
 
 https://docs.clarifai.com/ - Clarifai API - food recognition AI
 
+
+
