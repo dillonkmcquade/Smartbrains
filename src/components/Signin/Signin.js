@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../Logo";
 import RingLoader from "react-spinners/RingLoader";
 import { css } from "@emotion/core";
+import './signin.css';
 
 const override = css`
   display: block;
@@ -59,7 +60,7 @@ class Signin extends React.Component {
             className="pa3"
           />
         ) : (
-          <article className="mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
+          <article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
             <main className="pa4 black-80">
               <div className="measure">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -94,7 +95,7 @@ class Signin extends React.Component {
                     />
                   </div>
                 </fieldset>
-                <div className="">
+                <div>
                   <input
                     onClick={this.onSubmitSignIn}
                     className="b ph3 pv2 input-reset ba b--black br3 bg-transparent grow pointer f6 dib"
