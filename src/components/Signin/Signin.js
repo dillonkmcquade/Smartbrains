@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "../Logo";
 import RingLoader from "react-spinners/RingLoader";
 import { css } from "@emotion/core";
-import './signin.css';
 
 const override = css`
   display: block;
