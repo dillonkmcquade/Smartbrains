@@ -110,6 +110,9 @@ class Signin extends React.Component {
                     Don't have an account?
                   </p>
                 </div>
+                <span className='red'>
+                  ***For testing please use user: test@gmail.com and password: test****
+                </span>
               </div>
             </main>
           </article>
