@@ -20,13 +20,13 @@ const IngredientList = ({ ingredients }) => {
             return (
               <div>
                 <Recognition
+                  key={id}
                   name={ingredients[i].name}
                   value={Math.floor(ingredients[i].value * 100) + "%"}
                 />
               </div>
             );
           })}
-      )} ; })}
     </div>
   );
 };

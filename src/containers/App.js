@@ -19,11 +19,7 @@ const override = css`
 `;
 
 const initialState = {
-  input: "",
-  ingredients: [],
-  imgURL: "",
   route: "signin",
-  loading: false,
   user: {
     id: "",
     name: "",
@@ -50,42 +46,8 @@ class App extends Component {
     });
   };
 
-  onInputChange = event => {
-    this.setState({ input: event.target.value });
-  };
-
-  onButtonSubmit = () => {
-    this.setState({ loading: true });
-    this.setState({ imgURL: this.state.input });
-    fetch("https://fierce-mountain-50317.herokuapp.com/imagedata", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        input: this.state.input
-      })
-    })
-      .then(response => response.json())
-      .then(
-        function(response) {
-          const foodData = response.outputs[0].data.concepts;
-          if (response.status.code === 10000) {
-            return foodData;
-          }
-        },
-        function(err) {
-          console.log("error");
-        }
-      )
-      .then(foodData => {
-        this.setState({ ingredients: foodData });
-        this.setState({ loading: false });
-      })
-      .catch(console.log);
-  };
-
   onSignOut = () => {
-    this.setState({ ingredients: [] });
-    this.setState({ imgURL: "" });
+    this.setState({ foodData: "", imgUrl: "" });
   };
 
   onRouteChange = route => {
@@ -95,19 +57,16 @@ class App extends Component {
 
   render() {
     const ingredientData = this.state.ingredients;
-    const { onRouteChange, loadUser, onInputChange, onButtonSubmit } = this;
-    const { imgURL, route } = this.state;
+    const { onRouteChange, loadUser } = this;
+    const { route } = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particlesOptions} />
         {route === "home" ? (
           <div>
             <Navigation onRouteChange={onRouteChange} />
-            <ImageLinkForm
-              onInputChange={onInputChange}
-              onButtonSubmit={onButtonSubmit}
-            />
-            <ImageRecognition imageURL={imgURL} />
+            <ImageLinkForm />
+            <ImageRecognition />
             <Scroll>
               {this.state.loading === true ? (
                 <RingLoader
@@ -132,4 +91,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
