@@ -4,10 +4,9 @@ export const fetchFoodDataStart = () => ({
   type: foodActionTypes.FETCH_FOODDATA_START
 });
 
-export const fetchFoodDataSuccess = (foodData, imageUrl) => ({
+export const fetchFoodDataSuccess = foodData => ({
   type: foodActionTypes.FETCH_FOODDATA_SUCCESS,
-  payload: foodData,
-  imageUrl
+  payload: foodData
 });
 
 export const fetchFoodDataFailure = errorMessage => ({
@@ -18,7 +17,7 @@ export const fetchFoodDataFailure = errorMessage => ({
 export const fetchFoodDataStartAsync = input => {
   return dispatch => {
     dispatch(fetchFoodDataStart());
-    fetch("https://fierce-mountain-50317.herokuapp.com/imagedata", {
+    fetch("http://localhost:3000/imagedata", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -29,8 +28,7 @@ export const fetchFoodDataStartAsync = input => {
       .then(response => {
         const foodData = response.outputs[0].data.concepts;
         const imageUrl = response.outputs[0].input.data.image.url;
-        console.log(foodData);
-        dispatch(fetchFoodDataSuccess(foodData, imageUrl));
+        dispatch(fetchFoodDataSuccess(foodData));
       })
       .catch(error => dispatch(fetchFoodDataFailure(error.message)));
   };

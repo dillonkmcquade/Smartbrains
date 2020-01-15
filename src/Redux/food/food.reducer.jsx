@@ -13,21 +13,19 @@ const foodReducer = (state = INITIAL_STATE, action, imageUrl) => {
     case foodActionTypes.FETCH_FOODDATA_START:
         return {
           ...state,
-          loading: true
+          loading: true,
         };
     case foodActionTypes.FETCH_FOODDATA_SUCCESS:
       return {
         ...state,
         ingredients: action.payload,
-        imgURL: imageUrl
+        imgURL: imageUrl,
       };
     case foodActionTypes.ON_ROUTE_CHANGE:
     return {
         ...state,
         route: action.payload
         };
-      
-
     default:
       return state;
   }
