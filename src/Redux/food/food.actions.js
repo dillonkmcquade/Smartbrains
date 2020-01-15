@@ -4,10 +4,9 @@ export const fetchFoodDataStart = () => ({
   type: foodActionTypes.FETCH_FOODDATA_START
 });
 
-export const fetchFoodDataSuccess = (foodData, imageUrl) => ({
+export const fetchFoodDataSuccess = foodData => ({
   type: foodActionTypes.FETCH_FOODDATA_SUCCESS,
-  payload: foodData,
-  imageUrl
+  payload: foodData
 });
 
 export const fetchFoodDataFailure = errorMessage => ({
@@ -26,10 +25,8 @@ export const fetchFoodDataStartAsync = input => {
       })
     })
       .then(response => response.json())
-      .then(response => {
-        const foodData = response.outputs[0].data.concepts;
-        const imageUrl = response.outputs[0].input.data.image.url;
-        dispatch(fetchFoodDataSuccess(foodData, imageUrl));
+      .then(foodData => {
+        dispatch(fetchFoodDataSuccess(foodData));
       })
       .catch(error => dispatch(fetchFoodDataFailure(error.message)));
   };

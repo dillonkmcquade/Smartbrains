@@ -11,6 +11,8 @@ import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
 import RingLoader from "react-spinners/RingLoader";
 import { css } from "@emotion/core";
+import { selectIsLoading } from "../Redux/food/food.selectors";
+import { connect } from "react-redux";
 
 const override = css`
   display: block;
@@ -56,7 +58,7 @@ class App extends Component {
   };
 
   render() {
-    const ingredientData = this.state.ingredients;
+    const { isLoading } = this.props;
     const { onRouteChange, loadUser } = this;
     const { route } = this.state;
     return (
@@ -68,7 +70,7 @@ class App extends Component {
             <ImageLinkForm />
             <ImageRecognition />
             <Scroll>
-              {this.state.loading === true ? (
+              {isLoading ? (
                 <RingLoader
                   css={override}
                   sizeUnit={"px"}
@@ -78,7 +80,7 @@ class App extends Component {
                   className="pa3"
                 />
               ) : (
-                <IngredientList ingredients={ingredientData} />
+                <IngredientList />
               )}
             </Scroll>
           </div>
@@ -92,4 +94,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isLoading: selectIsLoading(state)
+});
+
+export default connect(mapStateToProps)(App);

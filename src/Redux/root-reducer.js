@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
 import foodReducer from './food/food.reducer';
+import { combineReducers } from 'redux';
 
 
 

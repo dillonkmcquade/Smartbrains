@@ -1,7 +1,10 @@
 import React from "react";
 import Recognition from "./Recognition.js";
+import { connect } from "react-redux";
+import { selectIngredients } from "../Redux/food/food.selectors";
 
 const IngredientList = ({ ingredients }) => {
+  console.log(ingredients);
   return (
     <div className="mt0">
       <div
@@ -31,4 +34,8 @@ const IngredientList = ({ ingredients }) => {
   );
 };
 
-export default IngredientList;
+const mapStateToProps = state => ({
+  ingredients: selectIngredients(state)
+});
+
+export default connect(mapStateToProps)(IngredientList);
