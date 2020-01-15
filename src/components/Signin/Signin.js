@@ -10,7 +10,7 @@ const override = css`
 `;
 
 class Signin extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       signInEmail: "",
@@ -26,7 +26,7 @@ class Signin extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
   onSubmitSignIn = () => {
-    this.setState({ loading: true });
+    this.setState({loading: true})
     fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -39,27 +39,27 @@ class Signin extends React.Component {
       .then(data => {
         if (data.id) {
           this.props.onRouteChange("home");
-          this.setState({ loading: false });
+          this.setState({loading: false})
         }
       })
-      .catch(console.log);
+      .catch(err => console.log(err));
   };
   render() {
     const { onRouteChange } = this.props;
     return (
       <div>
         <Logo />
-        {this.state.loading === true ? (
-          <RingLoader
+        {this.state.loading === true ? 
+          (<RingLoader
             css={override}
             sizeUnit={"px"}
             size={150}
             color={"#123abc"}
             loading={this.state.loading}
             className="pa3"
-          />
-        ) : (
-          <article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
+        />) :
+        
+          (<article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
             <main className="pa4 black-80">
               <div className="measure">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -115,10 +115,9 @@ class Signin extends React.Component {
                 </span>
               </div>
             </main>
-          </article>
-        )}
+  </article>)}
       </div>
-    );
+    )
   }
 }
 

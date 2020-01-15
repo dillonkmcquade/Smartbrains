@@ -1,4 +1,4 @@
-import { foodActionTypes } from "./food.types";
+import { FoodActionTypes } from "./food.types";
 
 const INITIAL_STATE = {
   ingredients: [],
@@ -9,28 +9,27 @@ const INITIAL_STATE = {
 
 const foodReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case foodActionTypes.FETCH_FOODDATA_START:
+    case FoodActionTypes.FETCH_FOODDATA_START:
       return {
         ...state,
         isLoading: true
       };
-    case foodActionTypes.FETCH_FOODDATA_SUCCESS:
+    case FoodActionTypes.FETCH_FOODDATA_SUCCESS:
       return {
         ...state,
-        ingredients: action.payload.foodData,
-        imgURL: action.payload.imageUrl,
+        ingredients: action.payload,
         isLoading: false
       };
-    case foodActionTypes.FETCH_FOODDATA_FAILURE:
+    case FoodActionTypes.FETCH_FOODDATA_FAILURE:
       return {
         ...state,
         errorMessage: action.payload,
         isLoading: false
       };
-    case foodActionTypes.ON_ROUTE_CHANGE:
+    case FoodActionTypes.UPDATE_IMAGE_URL:
       return {
         ...state,
-        route: action.payload
+        imgURL: action.payload
       };
     default:
       return state;

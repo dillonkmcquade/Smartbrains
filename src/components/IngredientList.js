@@ -17,19 +17,18 @@ const IngredientList = ({ ingredients }) => {
         <div className="tc pl4 w-50">Ingredient</div>
         <div className="tc pl4 w-50">Probability</div>
       </div>
-      {!ingredients
-        ? console.log("no ingredients provided")
-        : ingredients.map((id, i) => {
+      {!ingredients  ? '' : 
+         (ingredients.map((id, i) => {
             return (
               <div>
                 <Recognition
-                  key={id}
+                  id={ingredients[i].id}
                   name={ingredients[i].name}
                   value={Math.floor(ingredients[i].value * 100) + "%"}
                 />
               </div>
             );
-          })}
+          })) }
     </div>
   );
 };

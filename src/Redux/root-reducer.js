@@ -1,4 +1,4 @@
-import foodReducer from './food/food.reducer';
+import foodReducer from './food/food.reducer.js';
 import { combineReducers } from 'redux';
 
 
