@@ -26,7 +26,7 @@ export const fetchFoodDataFailure = errorMessage => ({
 export const fetchFoodDataStartAsync = input => {
   return dispatch => {
     dispatch(fetchFoodDataStart());
-    return fetch("http://localhost:3000/imagedata", {
+    return fetch("http://fierce-mountain-50317.herokuapp.com/imagedata", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
