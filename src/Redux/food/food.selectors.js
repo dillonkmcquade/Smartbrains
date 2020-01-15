@@ -13,5 +13,3 @@ export const selectIsLoading = createSelector(
 );
 
 export const selectImageUrl = createSelector([selectFood], food => food.imgURL);
-
-

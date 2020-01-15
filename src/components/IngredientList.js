@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { selectIngredients } from "../Redux/food/food.selectors";
 
 const IngredientList = ({ ingredients }) => {
-  console.log(ingredients);
   return (
     <div className="mt0">
       <div
@@ -17,8 +16,9 @@ const IngredientList = ({ ingredients }) => {
         <div className="tc pl4 w-50">Ingredient</div>
         <div className="tc pl4 w-50">Probability</div>
       </div>
-      {!ingredients  ? '' : 
-         (ingredients.map((id, i) => {
+      {!ingredients
+        ? ""
+        : ingredients.map((id, i) => {
             return (
               <div>
                 <Recognition
@@ -28,7 +28,7 @@ const IngredientList = ({ ingredients }) => {
                 />
               </div>
             );
-          })) }
+          })}
     </div>
   );
 };

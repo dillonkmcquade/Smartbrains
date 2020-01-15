@@ -9,16 +9,9 @@ import Register from "../components/Register/Register";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
-import RingLoader from "react-spinners/RingLoader";
-import { css } from "@emotion/core";
+import RingLoaderComponent from "../components/ringloader";
 import { selectIsLoading } from "../Redux/food/food.selectors";
 import { connect } from "react-redux";
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
 
 const initialState = {
   route: "signin",
@@ -70,18 +63,7 @@ class App extends Component {
             <ImageLinkForm />
             <ImageRecognition />
             <Scroll>
-              {isLoading ? (
-                <RingLoader
-                  css={override}
-                  sizeUnit={"px"}
-                  size={150}
-                  color={"#123abc"}
-                  loading={this.state.loading}
-                  className="pa3"
-                />
-              ) : (
-                <IngredientList />
-              )}
+              {isLoading ? <RingLoaderComponent /> : <IngredientList />}
             </Scroll>
           </div>
         ) : route === "signin" ? (

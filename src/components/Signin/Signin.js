@@ -1,13 +1,6 @@
 import React from "react";
 import Logo from "../Logo";
-import RingLoader from "react-spinners/RingLoader";
-import { css } from "@emotion/core";
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+import RingLoaderComponent from "../ringloader";
 
 class Signin extends React.Component {
   constructor() {
@@ -26,7 +19,7 @@ class Signin extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
   onSubmitSignIn = () => {
-    this.setState({loading: true})
+    this.setState({ loading: true });
     fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -39,27 +32,23 @@ class Signin extends React.Component {
       .then(data => {
         if (data.id) {
           this.props.onRouteChange("home");
-          this.setState({loading: false})
         }
       })
       .catch(err => console.log(err));
   };
+
+  componentWillUnmount() {
+    this.setState({ loading: false });
+  }
   render() {
     const { onRouteChange } = this.props;
     return (
       <div>
         <Logo />
-        {this.state.loading === true ? 
-          (<RingLoader
-            css={override}
-            sizeUnit={"px"}
-            size={150}
-            color={"#123abc"}
-            loading={this.state.loading}
-            className="pa3"
-        />) :
-        
-          (<article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
+        {this.state.loading === true ? (
+          <RingLoaderComponent />
+        ) : (
+          <article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
             <main className="pa4 black-80">
               <div className="measure">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -110,14 +99,16 @@ class Signin extends React.Component {
                     Don't have an account?
                   </p>
                 </div>
-                <span className='red'>
-                  ***For testing please use user: test@gmail.com and password: test****
+                <span className="red">
+                  ***For testing please use user: test@gmail.com and password:
+                  test****
                 </span>
               </div>
             </main>
-  </article>)}
+          </article>
+        )}
       </div>
-    )
+    );
   }
 }
 
