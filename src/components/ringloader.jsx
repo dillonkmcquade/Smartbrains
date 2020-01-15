@@ -9,14 +9,16 @@ const override = css`
 `;
 
 const RingLoaderComponent = () => {
-  <RingLoader
-    css={override}
-    sizeUnit={"px"}
-    size={150}
-    color={"#123abc"}
-    loading={this.state.loading}
-    className="pa3"
-  />;
+  return (
+    <RingLoader
+      css={override}
+      sizeUnit={"px"}
+      size={150}
+      color={"#123abc"}
+      loading={true}
+      className="pa3"
+    />
+  );
 };
 
 export default RingLoaderComponent;

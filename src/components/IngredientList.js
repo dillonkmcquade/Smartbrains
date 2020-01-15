@@ -18,15 +18,13 @@ const IngredientList = ({ ingredients }) => {
       </div>
       {!ingredients
         ? ""
-        : ingredients.map((id, i) => {
+        : ingredients.map((ingredient) => {
             return (
-              <div>
                 <Recognition
-                  id={ingredients[i].id}
-                  name={ingredients[i].name}
-                  value={Math.floor(ingredients[i].value * 100) + "%"}
+                  key={ingredient.id}
+                  name={ingredient.name}
+                  value={Math.floor(ingredient.value * 100) + "%"}
                 />
-              </div>
             );
           })}
     </div>

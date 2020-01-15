@@ -3,13 +3,17 @@ import ImageLinkForm from "../components/ImageLinkForm";
 import Navigation from "../components/Navigation";
 import "./App.css";
 import Particles from "react-particles-js";
-import particlesOptions from "./particles";
+import particlesOptions from "../components/particles";
 import Signin from "../components/Signin/Signin";
 import Register from "../components/Register/Register";
 import IngredientList from "../components/IngredientList";
 import ImageRecognition from "../components/ImageRecognition";
 import Scroll from "../components/Scroll";
 import RingLoaderComponent from "../components/ringloader";
+import {
+  updateImageUrl,
+  fetchFoodDataSuccess
+} from "../Redux/food/food.actions";
 import { selectIsLoading } from "../Redux/food/food.selectors";
 import { connect } from "react-redux";
 
@@ -41,13 +45,8 @@ class App extends Component {
     });
   };
 
-  onSignOut = () => {
-    this.setState({ foodData: "", imgUrl: "" });
-  };
-
   onRouteChange = route => {
     this.setState({ route: route });
-    this.onSignOut();
   };
 
   render() {
@@ -80,4 +79,9 @@ const mapStateToProps = state => ({
   isLoading: selectIsLoading(state)
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  updateImageUrl: url => dispatch(updateImageUrl(url)),
+  fetchFoodDataSuccess: input => dispatch(fetchFoodDataSuccess(input))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
