@@ -1,11 +1,10 @@
 import React from "react";
 import RingLoaderComponent from "../ringloader";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./signin.css";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
 import { fetchUserStartAsync } from "../../Redux/user/user.actions";
-import { selectIsLoggedIn } from "../../Redux/user/user.selectors";
 
 class Signin extends React.Component {
   constructor() {
@@ -29,7 +28,7 @@ class Signin extends React.Component {
       email: signInEmail,
       password: signInPassword
     };
-    const { fetchUserStartAsync, isLoading, isLoggedIn } = this.props;
+    const { fetchUserStartAsync, isLoading } = this.props;
     return (
       <div className="sign-in-component">
         {isLoading ? (
@@ -72,7 +71,7 @@ class Signin extends React.Component {
                 </fieldset>
                 <div>
                   <input
-                    onClick={ () => fetchUserStartAsync(credentials) }
+                    onClick={() => fetchUserStartAsync(credentials)}
                     className="b ph3 pv2 input-reset ba b--black br3 bg-transparent grow pointer f6 dib"
                     type="submit"
                     value="Sign in"
@@ -104,8 +103,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  isLoading: selectIsLoading(state),
-  isLoggedIn: selectIsLoggedIn(state)
+  isLoading: selectIsLoading(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

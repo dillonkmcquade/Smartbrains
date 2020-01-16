@@ -1,0 +1,18 @@
+.ingredient-item {
+    width: 40vw;
+    height: 30px;
+    padding: 10px;
+    background-color: #ff3546;
+    color: black;
+    border-bottom: 2px solid gray;
+    display: flex;
+    font-family: monoton;
+}
+
+.ingredient-name {
+    width: 50%;
+}
+
+.ingredient-value {
+    width: 50%;
+}

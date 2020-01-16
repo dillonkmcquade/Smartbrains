@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchFoodDataStartAsync } from "../../Redux/food/food.actions";
-import './imagelinkform.css';
+import "./imagelinkform.css";
 
 class ImageLinkForm extends React.Component {
   constructor() {
@@ -17,10 +17,11 @@ class ImageLinkForm extends React.Component {
   render() {
     const { fetchFoodDataStartAsync } = this.props;
     return (
-      <div className='image-link-form'>
+      <div className="image-link-form">
         <div>
           <p className="f2 courier light-gray">
-              "Insert a photo URL of your favorite food to see what ingredients it contains!"
+            Insert a photo URL of your favorite food to see what ingredients it
+            contains!
           </p>
         </div>
         <div className="center mw7 br-pill bg-light-green br2 pa3 bbg">
@@ -49,6 +50,5 @@ class ImageLinkForm extends React.Component {
 const mapDispatchToProps = dispatch => ({
   fetchFoodDataStartAsync: input => dispatch(fetchFoodDataStartAsync(input))
 });
-
 
 export default connect(null, mapDispatchToProps)(ImageLinkForm);

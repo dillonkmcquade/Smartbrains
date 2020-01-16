@@ -1,5 +1,5 @@
 import React from "react";
-import IngredientList from "../../components/IngredientList";
+import IngredientList from "../../components/ingredient-list/IngredientList";
 import ImageRecognition from "../../components/ImageRecognition";
 import Scroll from "../../components/Scroll";
 import RingLoaderComponent from "../../components/ringloader";
