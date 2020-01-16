@@ -1,4 +1,5 @@
 import React from "react";
+import './register.css';
 
 class Register extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Register extends React.Component {
       onSubmitRegister
     } = this;
     return (
-      <article className="mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
+      <article className="mw6 register-component center bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">

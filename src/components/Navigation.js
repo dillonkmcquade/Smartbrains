@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./Logo";
+import Logo from "./logo/Logo";
 import { connect } from "react-redux";
 import {
   updateImageUrl,

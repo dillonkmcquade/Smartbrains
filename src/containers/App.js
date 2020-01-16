@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ImageLinkForm from "../components/ImageLinkForm";
+import ImageLinkForm from "../components/image-link-form/ImageLinkForm";
 import Navigation from "../components/Navigation";
 import "./App.css";
 import Particles from "react-particles-js";
@@ -16,6 +16,7 @@ import {
 } from "../Redux/food/food.actions";
 import { selectIsLoading } from "../Redux/food/food.selectors";
 import { connect } from "react-redux";
+import Logo from "../components/logo/Logo";
 
 const initialState = {
   route: "signin",
@@ -56,6 +57,7 @@ class App extends Component {
     return (
       <div className="App">
         <Particles className="particles" params={particlesOptions} />
+        <Logo />
         {route === "home" ? (
           <div>
             <Navigation onRouteChange={onRouteChange} />

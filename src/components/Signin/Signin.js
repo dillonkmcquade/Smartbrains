@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "../Logo";
 import RingLoaderComponent from "../ringloader";
+import "./signin.css";
 
 class Signin extends React.Component {
   constructor() {
@@ -43,8 +43,7 @@ class Signin extends React.Component {
   render() {
     const { onRouteChange } = this.props;
     return (
-      <div>
-        <Logo />
+      <div className="sign-in-component">
         {this.state.loading === true ? (
           <RingLoaderComponent />
         ) : (

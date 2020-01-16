@@ -1,13 +1,13 @@
 import React from "react";
 import Tilt from "react-tilt";
 import "./Logo.css";
-import brain from "./brain.png";
+import brain from "../../assets/brain.png";
 
 const Logo = () => {
   return (
     <div>
       <Tilt
-        className="Tilt br4 shadow-5 pointer ma4"
+        className="Tilt br4 absolute shadow-5 pointer ma4"
         options={{ max: 55 }}
         style={{ height: 100, width: 120 }}
       >
