@@ -5,11 +5,12 @@ import {
   updateImageUrl,
   fetchFoodDataSuccess
 } from "../Redux/food/food.actions";
+import {userLogOut} from '../Redux/user/user.actions';
 
 const Navigation = ({
-  onRouteChange,
   updateImageUrl,
-  fetchFoodDataSuccess
+  fetchFoodDataSuccess,
+  userLogOut
 }) => {
   return (
     <nav
@@ -22,7 +23,7 @@ const Navigation = ({
       <div className="ph3">
         <p
           onClick={() => {
-            onRouteChange("signin");
+            userLogOut();
             updateImageUrl("");
             fetchFoodDataSuccess("");
           }}
@@ -37,7 +38,8 @@ const Navigation = ({
 
 const mapDispatchToProps = dispatch => ({
   updateImageUrl: url => dispatch(updateImageUrl(url)),
-  fetchFoodDataSuccess: input => dispatch(fetchFoodDataSuccess(input))
+  fetchFoodDataSuccess: input => dispatch(fetchFoodDataSuccess(input)),
+  userLogOut: () => dispatch(userLogOut())
 });
 
 export default connect(null, mapDispatchToProps)(Navigation);

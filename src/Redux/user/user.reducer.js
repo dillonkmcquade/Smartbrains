@@ -9,7 +9,8 @@ const INITIAL_STATE = {
     joined: ""
   },
   isLoading: false,
-  errorMessage: undefined
+  errorMessage: undefined,
+  isLoggedIn: false
 };
 
 const foodReducer = (state = INITIAL_STATE, action) => {
@@ -28,13 +29,19 @@ const foodReducer = (state = INITIAL_STATE, action) => {
           name: action.payload.name,
           email: action.payload.email,
           joined: action.payload.joined
-        }
+        },
+        isLoggedIn: true
       };
     case UserActionTypes.FETCH_USER_FAILURE:
       return {
         ...state,
         isLoading: false,
         errorMessage: action.payload
+      };
+    case UserActionTypes.USER_LOG_OUT:
+      return {
+        ...state,
+        isLoggedIn: false
       };
     default:
       return state;

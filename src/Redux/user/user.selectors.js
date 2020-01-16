@@ -7,4 +7,14 @@ export const selectIsLoading = createSelector(
   user => user.isLoading
 );
 
-export const selectUserId = createSelector([selectUser], user => user.id);
+export const selectUser2 = createSelector([selectUser], user => user.user);
+
+export const selectUserId = createSelector(
+  [selectUser2],
+  user2 => user2.id
+)
+
+export const selectIsLoggedIn = createSelector(
+  [selectUser],
+  user => user.isLoggedIn
+)
