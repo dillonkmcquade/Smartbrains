@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./containers/App.js";
 import { store } from "./Redux/store";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import "tachyons";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

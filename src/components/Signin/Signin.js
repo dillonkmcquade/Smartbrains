@@ -1,14 +1,17 @@
 import React from "react";
 import RingLoaderComponent from "../ringloader";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./signin.css";
+import { selectIsLoading } from "../../Redux/food/food.selectors";
+import { fetchUserStartAsync } from "../../Redux/user/user.actions";
 
 class Signin extends React.Component {
   constructor() {
     super();
     this.state = {
       signInEmail: "",
-      signInPassword: "",
-      loading: false
+      signInPassword: ""
     };
   }
 
@@ -18,33 +21,17 @@ class Signin extends React.Component {
   onPasswordChange = event => {
     this.setState({ signInPassword: event.target.value });
   };
-  onSubmitSignIn = () => {
-    this.setState({ loading: true });
-    fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.id) {
-          this.props.onRouteChange("home");
-        }
-      })
-      .catch(err => console.log(err));
-  };
 
-  componentWillUnmount() {
-    this.setState({ loading: false });
-  }
   render() {
-    const { onRouteChange } = this.props;
+    const { signInEmail, signInPassword } = this.state;
+    const credentials = {
+      signInEmail,
+      signInPassword
+    };
+    const { fetchUserStartAsync, isLoading } = this.props;
     return (
       <div className="sign-in-component">
-        {this.state.loading === true ? (
+        {isLoading ? (
           <RingLoaderComponent />
         ) : (
           <article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
@@ -84,19 +71,19 @@ class Signin extends React.Component {
                 </fieldset>
                 <div>
                   <input
-                    onClick={this.onSubmitSignIn}
+                    onClick={() => fetchUserStartAsync(credentials)}
                     className="b ph3 pv2 input-reset ba b--black br3 bg-transparent grow pointer f6 dib"
                     type="submit"
                     value="Sign in"
                   />
                 </div>
                 <div className="lh-copy mt3">
-                  <p
-                    onClick={() => onRouteChange("register")}
+                  <Link
+                    to="/register"
                     className="f5 pointer ba-3 link dim black db"
                   >
                     Don't have an account?
-                  </p>
+                  </Link>
                 </div>
                 <span className="red">
                   ***For testing please use user: test@gmail.com and password:
@@ -111,4 +98,12 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+const mapDispatchToProps = dispatch => ({
+  fetchUserStartAsync: credentials => dispatch(fetchUserStartAsync(credentials))
+});
+
+const mapStateToProps = state => ({
+  isLoading: selectIsLoading(state)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
