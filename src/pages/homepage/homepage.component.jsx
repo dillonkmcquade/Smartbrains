@@ -1,28 +1,26 @@
 import React from "react";
 import IngredientList from "../../components/ingredient-list/IngredientList";
 import ImageRecognition from "../../components/ImageRecognition";
-import Scroll from "../../components/Scroll";
 import RingLoaderComponent from "../../components/ringloader";
 import Navigation from "../../components/Navigation";
-import {connect} from 'react-redux';
-import {selectIsLoading} from '../../Redux/food/food.selectors';
-import ImageLinkForm from '../../components/image-link-form/ImageLinkForm';
+import { connect } from "react-redux";
+import { selectIsLoading } from "../../Redux/food/food.selectors";
+import ImageLinkForm from "../../components/image-link-form/ImageLinkForm";
+import "./homepage.css";
 
-const HomePage = ({isLoading}) => {
+const HomePage = ({ isLoading }) => {
   return (
-    <div>
-      <Navigation />
+    <div className="homepage">
       <ImageLinkForm />
       <ImageRecognition />
-      <Scroll>
-        {isLoading ? <RingLoaderComponent /> : <IngredientList />}
-      </Scroll>
+
+      {isLoading ? <RingLoaderComponent /> : <IngredientList />}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-    isLoading: selectIsLoading(state)   
+  isLoading: selectIsLoading(state)
 });
 
 export default connect(mapStateToProps)(HomePage);

@@ -5,12 +5,13 @@ import {
   updateImageUrl,
   fetchFoodDataSuccess
 } from "../Redux/food/food.actions";
+import {selectIsLoggedIn} from '../Redux/user/user.selectors';
 import {userLogOut} from '../Redux/user/user.actions';
 
 const Navigation = ({
   updateImageUrl,
   fetchFoodDataSuccess,
-  userLogOut
+  userLogOut, isLoggedIn
 }) => {
   return (
     <nav
@@ -21,7 +22,7 @@ const Navigation = ({
         <Logo />
       </div>
       <div className="ph3">
-        <p
+        {isLoggedIn ? (<p
           onClick={() => {
             userLogOut();
             updateImageUrl("");
@@ -30,7 +31,7 @@ const Navigation = ({
           className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-green pointer"
         >
           Sign Out
-        </p>
+        </p>) : null}
       </div>
     </nav>
   );
@@ -42,4 +43,9 @@ const mapDispatchToProps = dispatch => ({
   userLogOut: () => dispatch(userLogOut())
 });
 
-export default connect(null, mapDispatchToProps)(Navigation);
+const mapStateToProps = state => ({
+    isLoggedIn: selectIsLoggedIn(state)
+   
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

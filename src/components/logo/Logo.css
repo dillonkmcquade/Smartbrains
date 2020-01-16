@@ -1,3 +1,15 @@
-.Tilt {
-  background:  #b3ffab;
+.foodifai-logo {
+  background:  white;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;              
+}
+.foodifai-logo > img {
+  width: 100%;
+  height: 100%;
 }

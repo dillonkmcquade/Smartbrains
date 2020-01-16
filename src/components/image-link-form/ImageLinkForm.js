@@ -19,15 +19,15 @@ class ImageLinkForm extends React.Component {
     return (
       <div className="image-link-form">
         <div>
-          <p className="f2 courier light-gray">
+          <p className="f2 courier black">
             Insert a photo URL of your favorite food to see what ingredients it
             contains!
           </p>
         </div>
-        <div className="center mw7 br-pill bg-light-green br2 pa3 bbg">
-          <form className="f4 pa2 w-70 center">
+        <div className="center br-pill bg-light-green bbg">
+          <form className="f4 center">
             <input
-              className="f4 pa2 w-70 shadow-5 center"
+              className="f4 shadow-5"
               type="text"
               placeholder="Insert image url here.."
               onChange={this.onInputChange}
@@ -35,7 +35,7 @@ class ImageLinkForm extends React.Component {
             />
             <button
               type="button"
-              className="f4 w-30 grow link ph3 pv2 dib white pointer bg-green"
+              className="f4 grow link ph3 pv2 dib white pointer bg-green"
               onClick={() => fetchFoodDataStartAsync(this.state.input)}
             >
               Detect

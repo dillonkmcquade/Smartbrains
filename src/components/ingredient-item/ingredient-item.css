@@ -2,9 +2,9 @@
     width: 40vw;
     height: 30px;
     padding: 10px;
-    background-color: #ff3546;
     color: black;
     border-bottom: 2px solid gray;
+    font-size: 20px;
     display: flex;
     font-family: monoton;
 }
