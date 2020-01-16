@@ -1,12 +1,13 @@
 import React from "react";
-import Logo from "./logo/Logo";
+import Logo from "../logo/Logo";
 import { connect } from "react-redux";
 import {
   updateImageUrl,
   fetchFoodDataSuccess
-} from "../Redux/food/food.actions";
-import { selectIsLoggedIn } from "../Redux/user/user.selectors";
-import { userLogOut } from "../Redux/user/user.actions";
+} from "../../Redux/food/food.actions";
+import { selectIsLoggedIn } from "../../Redux/user/user.selectors";
+import { userLogOut } from "../../Redux/user/user.actions";
+import "./navigation.css";
 
 const Navigation = ({
   updateImageUrl,
@@ -15,7 +16,7 @@ const Navigation = ({
   isLoggedIn
 }) => {
   return (
-    <nav className="dt w-100 flex border-box">
+    <nav className="navigation">
       <Logo />
       <div className="ph3">
         {isLoggedIn ? (

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import Navigation from '../components/Navigation';
+import Navigation from '../components/navigation/Navigation';
 import { selectIsLoggedIn, selectIsLoading } from "../Redux/user/user.selectors";
 import HomePage from "../pages/homepage/homepage.component";
 import SignIn from "../components/Signin/Signin";
