@@ -1,15 +1,12 @@
 import React from "react";
-import { selectImageUrl } from "../Redux/food/food.selectors";
+import { selectImageUrl } from "../../Redux/food/food.selectors";
 import { connect } from "react-redux";
+import "./image-recognition.css";
 
 const ImageRecognition = ({ imageURL }) => {
   return (
-    <div className="ma">
-      {!imageURL ? null : (
-        <div className="relative ba1-white mt4">
-          <img alt="foodPhoto" src={imageURL} width="500px" height="auto" />
-        </div>
-      )}
+    <div className="image-recognition">
+      {!imageURL ? null : <img alt="foodPhoto" src={imageURL} />}
     </div>
   );
 };

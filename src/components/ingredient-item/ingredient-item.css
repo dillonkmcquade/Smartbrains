@@ -6,7 +6,8 @@
     border-bottom: 2px solid gray;
     font-size: 20px;
     display: flex;
-    font-family: monoton;
+    font-family: 'Alata', sans-serif;
+    font-weight: bold;
 }
 
 .ingredient-name {

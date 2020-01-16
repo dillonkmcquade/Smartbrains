@@ -10,4 +10,5 @@
     text-align: center;
     height: 80vh;
     box-shadow: 5px 5px 5px 5px gray;
+    overflow: scroll;
 }
