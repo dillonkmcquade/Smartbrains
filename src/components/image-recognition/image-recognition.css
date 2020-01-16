@@ -1,7 +1,6 @@
 .image-recognition {
     width: 600px;
     background-color: rgb(248, 188, 170);
-    border: 1px solid gray;
     border-radius: 5px;
     display: flex;
     justify-content: center;

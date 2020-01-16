@@ -29,7 +29,7 @@ class ImageLinkForm extends React.Component {
             <input
               className="f4 w-70 shadow-5"
               type="text"
-              placeholder="Insert image url here.."
+              placeholder="Insert url here.."
               onChange={this.onInputChange}
               required
             />

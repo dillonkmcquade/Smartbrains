@@ -72,7 +72,7 @@ class Signin extends React.Component {
                 <div>
                   <input
                     onClick={() => fetchUserStartAsync(credentials)}
-                    className="b ph3 pv2 input-reset ba b--black br3 bg-transparent grow pointer f6 dib"
+                    className="b ph3 pv2 input-reset ba b--black br3 bg-transparent pointer f6 dib"
                     type="submit"
                     value="Sign in"
                   />
