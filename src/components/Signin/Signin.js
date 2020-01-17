@@ -2,7 +2,7 @@ import React from "react";
 import RingLoaderComponent from "../ringloader";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import "./signin.css";
+import "./signin.styles.scss";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
 import { fetchUserStartAsync } from "../../Redux/user/user.actions";
 
@@ -34,7 +34,7 @@ class Signin extends React.Component {
         {isLoading ? (
           <RingLoaderComponent />
         ) : (
-          <article className=" mw6 center w-50 bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
+          <article className="center sign-in-form bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
             <main className="pa4 black-80">
               <div className="measure">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">

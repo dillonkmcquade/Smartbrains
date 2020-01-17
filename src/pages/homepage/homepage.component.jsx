@@ -5,16 +5,16 @@ import RingLoaderComponent from "../../components/ringloader";
 import { connect } from "react-redux";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
 import ImageLinkForm from "../../components/image-link-form/ImageLinkForm";
-import "./homepage.css";
+import "./homepage.styles.scss";
 
 const HomePage = ({ isLoading }) => {
   return (
     <div className="homepage">
-      <div className='image-form'>
+      <div className="image-form">
         <ImageLinkForm />
         <ImageRecognition />
       </div>
-      {isLoading ? <RingLoaderComponent /> : <IngredientList />}
+      <div className='ingredient-list-container'>{isLoading ? <RingLoaderComponent /> : <IngredientList />}</div>
     </div>
   );
 };

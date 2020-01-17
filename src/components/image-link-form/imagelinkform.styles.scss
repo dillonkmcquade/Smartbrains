@@ -1,0 +1,15 @@
+.image-link-form {
+  width: 50vw;
+  padding: 10px;
+  font-family: "Alata", sans-serif;
+
+  @media screen and (max-width: 800px) {
+    width: 90vw;
+    margin-top: 0px;
+  }
+
+  .header-text {
+    font-weight: bold;
+    text-shadow: 1px 1px 1px white;
+  }
+}

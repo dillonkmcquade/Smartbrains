@@ -1,6 +1,6 @@
 import React from "react";
 import "tachyons";
-import './ingredient-item.css';
+import './ingredient-item.styles.scss';
 
 const IngredientItem = ({ name, value }) => {
   return (

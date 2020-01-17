@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchFoodDataStartAsync } from "../../Redux/food/food.actions";
-import "./imagelinkform.css";
+import "./imagelinkform.styles.scss";
 
 class ImageLinkForm extends React.Component {
   constructor() {
@@ -19,15 +19,15 @@ class ImageLinkForm extends React.Component {
     return (
       <div className="image-link-form">
         <div>
-          <p className="f2 black text-center">
+          <p className="f2 header-text black">
             Insert a photo URL of your favorite food to see what ingredients it
             contains!
           </p>
         </div>
-        <div className="center bg-light-green bbg">
+        <div className="center flex bg-light-green bbg pa2 br2">
           <form className="f4 center">
             <input
-              className="f4 w-70 shadow-5"
+              className="f4 w-100 pa1 shadow-5"
               type="text"
               placeholder="Insert url here.."
               onChange={this.onInputChange}
@@ -35,7 +35,7 @@ class ImageLinkForm extends React.Component {
             />
             <button
               type="button"
-              className="f4 w-30 grow link dib white pointer bg-green"
+              className="f4 grow link dib white pointer bg-green"
               onClick={() => fetchFoodDataStartAsync(this.state.input)}
             >
               Detect

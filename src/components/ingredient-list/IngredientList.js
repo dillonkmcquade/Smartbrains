@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { selectIngredients } from "../../Redux/food/food.selectors";
 import IngredientItem from "../ingredient-item/ingredient-item.component";
-import './ingredientlist.css';
+import './ingredientlist.styles.scss';
 
 const IngredientList = ({ ingredients }) => {
   return (

@@ -8,12 +8,17 @@
     display: flex;
     font-family: 'Alata', sans-serif;
     font-weight: bold;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+
+    .ingredient-name {
+        width: 50%;
+    }
+
+    .ingredient-value {
+        width: 50%;
+    }
 }
 
-.ingredient-name {
-    width: 50%;
-}
-
-.ingredient-value {
-    width: 50%;
-}
