@@ -1,5 +1,5 @@
 import React from "react";
-import './register.css';
+import "./register.styles.scss";
 
 class Register extends React.Component {
   constructor(props) {
@@ -92,7 +92,7 @@ class Register extends React.Component {
                 />
               </div>
             </fieldset>
-            <div className="">
+            <div>
               <input
                 onClick={onSubmitRegister}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
