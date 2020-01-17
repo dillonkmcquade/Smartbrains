@@ -4,12 +4,12 @@
   align-items: center;
   margin-top: 40px;
   width: 50vw;
-  background-color: lavender;
+  background-color: rgb(190, 190, 248);
   border-radius: 5px;
-  border: 1px solid light-gray;
+  border: 1px solid gray;
   text-align: center;
   height: 80vh;
-  box-shadow: 1px 1px 1px 1px white;
+  box-shadow: 3px 2px 2px 1px gray;
   overflow: scroll;
 
   @media screen and (max-width: 800px) {
