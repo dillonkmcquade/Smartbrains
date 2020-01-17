@@ -1,7 +1,7 @@
 import React from "react";
 import { selectImageUrl } from "../../Redux/food/food.selectors";
 import { connect } from "react-redux";
-import "./image-recognition.css";
+import "./image-recognition.styles.scss";
 
 const ImageRecognition = ({ imageURL }) => {
   return (
