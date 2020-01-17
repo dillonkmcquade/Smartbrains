@@ -5,7 +5,6 @@ const INITIAL_STATE = {
     id: "",
     name: "",
     email: "",
-    entries: "",
     joined: ""
   },
   isLoading: false,
