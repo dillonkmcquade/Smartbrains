@@ -41,7 +41,13 @@ const foodReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.USER_LOG_OUT:
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
+        user: {
+          id: "",
+          name: "",
+          email: "",
+          joined: ""
+        }
       };
     default:
       return state;

@@ -19,6 +19,7 @@ export const fetchUserFailure = error => ({
 });
 
 export const fetchUserStartAsync = credentials => {
+  // used in sign-in component to communicate with server for authentication
   return dispatch => {
     dispatch(fetchUserStart());
     

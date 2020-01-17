@@ -1,14 +1,14 @@
 .sign-in-component {
-    padding-top: 100px;
+  padding-top: 100px;
 
+  @media screen and (max-width: 800px) {
+    padding-top: 0;
+  }
+
+  .sign-in-form {
+    width: 40vw;
     @media screen and (max-width: 800px) {
-        padding-top: 0;
+      width: 90vw;
     }
-
-    .sign-in-form {
-        @media screen and (max-width: 800px) {
-            width: 90vw;
-        }
-    }
-
+  }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import "./register.styles.scss";
 
 class Register extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       email: "",
