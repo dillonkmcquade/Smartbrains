@@ -1,24 +1,24 @@
 .ingredient-item {
-    width: 40vw;
-    height: 30px;
-    padding: 10px;
-    color: black;
-    border-bottom: 2px solid gray;
-    font-size: 20px;
-    display: flex;
-    font-family: 'Alata', sans-serif;
-    font-weight: bold;
+  width: 40vw;
+  height: 30px;
+  padding: 10px;
+  color: black;
+  border-bottom: 2px solid gray;
+  font-size: 20px;
+  display: flex;
+  font-family: "Alata", sans-serif;
+  font-weight: bold;
+  line-height: 10px;
 
-    @media screen and (max-width: 800px) {
-        width: 100%;
-    }
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 
-    .ingredient-name {
-        width: 50%;
-    }
+  .ingredient-name {
+    width: 50%;
+  }
 
-    .ingredient-value {
-        width: 50%;
-    }
+  .ingredient-value {
+    width: 50%;
+  }
 }
-

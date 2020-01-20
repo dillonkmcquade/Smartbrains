@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import RingLoaderComponent from "../ringloader";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -6,30 +6,15 @@ import "./signin.styles.scss";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
 import { fetchUserStartAsync } from "../../Redux/user/user.actions";
 
-class Signin extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      signInEmail: "",
-      signInPassword: ""
-    };
-  }
-
-  onEmailChange = event => {
-    this.setState({ signInEmail: event.target.value });
-  };
-  onPasswordChange = event => {
-    this.setState({ signInPassword: event.target.value });
-  };
-
-  render() {
-    const { signInEmail, signInPassword } = this.state;
-    const credentials = {
+const Signin = ({ fetchUserStartAsync, isLoading }) => {
+  const [signInEmail, setSignInEmail] = useState('');
+  const [signInPassword, setSignInPassword] = useState('');   
+  const credentials = {
       email: signInEmail,
       password: signInPassword
     };
-    const { fetchUserStartAsync, isLoading } = this.props;
-    return (
+    
+  return (
       <div className="sign-in-component">
         {isLoading ? (
           <RingLoaderComponent />
@@ -47,7 +32,7 @@ class Signin extends React.Component {
                       Email
                     </label>
                     <input
-                      onChange={this.onEmailChange}
+                      onChange={event => setSignInEmail(event.target.value)}
                       className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                       type="email"
                       name="email-address"
@@ -60,7 +45,7 @@ class Signin extends React.Component {
                       Password
                     </label>
                     <input
-                      onChange={this.onPasswordChange}
+                      onChange={event => setSignInPassword(event.target.value)}
                       className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                       type="password"
                       name="password"
@@ -95,8 +80,8 @@ class Signin extends React.Component {
         )}
       </div>
     );
-  }
 }
+
 
 const mapDispatchToProps = dispatch => ({
   fetchUserStartAsync: credentials => dispatch(fetchUserStartAsync(credentials))
