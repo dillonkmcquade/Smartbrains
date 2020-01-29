@@ -7,6 +7,7 @@ const Register = () => {
   const [name, setName] = useState("");
 
   const onSubmitRegister = () => {
+    
     fetch("https://fierce-mountain-50317.herokuapp.com/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
