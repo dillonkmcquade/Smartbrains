@@ -37,6 +37,11 @@ const foodReducer = (state = INITIAL_STATE, action) => {
         isLoading: false,
         errorMessage: action.payload
       };
+    case UserActionTypes.SET_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload
+      };
     case UserActionTypes.REGISTER_USER:
       return {
         ...state,

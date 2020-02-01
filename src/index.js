@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./containers/App.js";
+import App from "./App.js";
 import { store } from "./Redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from "./serviceWorker";
 import "tachyons";
 
 ReactDOM.render(

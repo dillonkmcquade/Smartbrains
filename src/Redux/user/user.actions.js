@@ -1,5 +1,9 @@
 import { UserActionTypes } from "./user.types";
 
+export const setLoading = action => ({
+  type: UserActionTypes.SET_LOADING,
+  payload: action
+})
 
 export const registerUser = user => ({
   type: UserActionTypes.REGISTER_USER,
