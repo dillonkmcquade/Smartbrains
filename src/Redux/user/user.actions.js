@@ -1,8 +1,14 @@
 import { UserActionTypes } from "./user.types";
 
+
+export const registerUser = user => ({
+  type: UserActionTypes.REGISTER_USER,
+  payload: user
+});
+
 export const userLogOut = () => ({
   type: UserActionTypes.USER_LOG_OUT
-})
+});
 
 export const fetchUserStart = () => ({
   type: UserActionTypes.FETCH_USER_START
@@ -22,7 +28,7 @@ export const fetchUserStartAsync = credentials => {
   // used in sign-in component to communicate with server for authentication
   return dispatch => {
     dispatch(fetchUserStart());
-    
+
     return fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -34,8 +40,8 @@ export const fetchUserStartAsync = credentials => {
       .then(response => response.json())
       .then(data => {
         if (data.id) {
-          console.log(data);
           dispatch(fetchUserSuccess(data));
+          
         }
       })
       .catch(err => dispatch(fetchUserFailure(err.message)));

@@ -8,26 +8,42 @@ import {
 import HomePage from "../pages/homepage/homepage.component";
 import SignIn from "../components/Signin/Signin";
 import Register from "../components/Register/Register";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import RingLoaderComponent from "../components/ringloader";
-import Footer from '../components/footer/footer.component';
+import Footer from "../components/footer/footer.component";
 
 const App = ({ isLoggedIn, isLoading }) => {
   return (
     <div className="App">
       <Navigation />
-      {!isLoggedIn ? (
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={isLoading ? RingLoaderComponent : SignIn}
-          />
-          <Route path="/register" component={Register} />
-        </Switch>
-      ) : (
-        <HomePage />
-      )}
+
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() =>
+            isLoggedIn ? (
+              isLoading ? (
+                <RingLoaderComponent />
+              ) : (
+                <Redirect to="/homepage" />
+              )
+            ) : (
+              <SignIn />
+            )
+          }
+        />
+        <Route
+          path="/register"
+          render={() =>
+            isLoggedIn ? <Redirect to="/homepage" /> : <Register />
+          }
+        />
+        <Route
+          path="/homepage"
+          render={() => (isLoggedIn ? <HomePage /> : <Redirect to="/" />)}
+        />
+      </Switch>
       <Footer />
     </div>
   );

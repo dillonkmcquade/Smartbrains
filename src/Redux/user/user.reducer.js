@@ -37,6 +37,17 @@ const foodReducer = (state = INITIAL_STATE, action) => {
         isLoading: false,
         errorMessage: action.payload
       };
+    case UserActionTypes.REGISTER_USER:
+      return {
+        ...state,
+        user: {
+          id: action.payload.id,
+          name: action.payload.name,
+          email: action.payload.email,
+          joined: action.payload.joined
+        },
+        isLoggedIn: true
+      };
     case UserActionTypes.USER_LOG_OUT:
       return {
         ...state,

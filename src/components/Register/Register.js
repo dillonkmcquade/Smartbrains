@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./register.styles.scss";
+import { connect } from "react-redux";
+import { registerUser } from "../../Redux/user/user.actions";
 
-const Register = () => {
+const Register = ({ registerUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
   const onSubmitRegister = () => {
-    
     fetch("https://fierce-mountain-50317.herokuapp.com/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -20,8 +21,9 @@ const Register = () => {
       .then(response => response.json())
       .then(user => {
         if (user.id) {
-          this.props.loadUser(user);
-          this.props.onRouteChange("home");
+          registerUser(user);
+        } else {
+          return;
         }
       })
       .catch(console.log("error registering user"));
@@ -87,4 +89,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapDispatchToProps = dispatch => ({
+  registerUser: user => dispatch(registerUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(Register);
