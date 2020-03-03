@@ -16,7 +16,7 @@ const App = ({ isLoggedIn }) => {
         <Route
           exact
           path="/"
-          render={() => (isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />)}
+          render={() => (isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />) }
         />
         <Route
           path="/register"

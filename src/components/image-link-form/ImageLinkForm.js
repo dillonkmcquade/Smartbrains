@@ -14,10 +14,10 @@ const ImageLinkForm = ({ fetchFoodDataStartAsync }) => {
           contains!
         </p>
       </div>
-      <div className="center flex bg-light-green bbg pa2 br2">
+      <div className="center flex bg-light-green bbg">
         <form className="f4 center">
           <input
-            className="f4 w-100 pa1 shadow-5"
+            className="f4 search-field shadow-5"
             type="text"
             placeholder="Insert url here.."
             onChange={event => setInput(event.target.value)}

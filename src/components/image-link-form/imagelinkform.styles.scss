@@ -1,7 +1,24 @@
 .image-link-form {
-  width: 50vw;
+  width: 60vw;
   padding: 10px;
   font-family: "Alata", sans-serif;
+
+  .search-field {
+    width: 50vw;
+    padding: 10px;
+    margin: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    &:focus {
+      border: 3px solid lightseagreen;
+    }
+    
+  }
+  button {
+    border-radius: 5px;
+
+  }
 
   @media screen and (max-width: 800px) {
     width: 90vw;
