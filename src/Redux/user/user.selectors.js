@@ -18,3 +18,8 @@ export const selectIsLoggedIn = createSelector(
   [selectUser],
   user => user.isLoggedIn
 )
+
+export const selectIsProfileOpen = createSelector(
+  [selectUser],
+  user => user.isProfileOpen
+)

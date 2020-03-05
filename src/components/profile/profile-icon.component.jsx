@@ -6,7 +6,8 @@ import {
   updateImageUrl,
   fetchFoodDataSuccess
 } from "../../Redux/food/food.actions";
-import { userLogOut } from "../../Redux/user/user.actions";
+import { userLogOut, toggleProfileOpen } from "../../Redux/user/user.actions";
+import { selectIsProfileOpen } from "../../Redux/user/user.selectors";
 import { connect } from "react-redux";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,7 +22,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ImageAvatars = ({ userLogOut, updateImageUrl, fetchFoodDataSuccess }) => {
+const ImageAvatars = ({
+  userLogOut,
+  updateImageUrl,
+  fetchFoodDataSuccess,
+  toggleProfileOpen,
+  isProfileOpen
+}) => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,6 +39,11 @@ const ImageAvatars = ({ userLogOut, updateImageUrl, fetchFoodDataSuccess }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleProfileButton = () => {
+    toggleProfileOpen(!isProfileOpen);
+    handleClose();
   };
 
   return (
@@ -53,7 +65,7 @@ const ImageAvatars = ({ userLogOut, updateImageUrl, fetchFoodDataSuccess }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={() => handleProfileButton()}>Profile</MenuItem>
         <MenuItem
           onClick={() => {
             userLogOut();
@@ -71,7 +83,12 @@ const ImageAvatars = ({ userLogOut, updateImageUrl, fetchFoodDataSuccess }) => {
 const mapDispatchToProps = dispatch => ({
   updateImageUrl: url => dispatch(updateImageUrl(url)),
   fetchFoodDataSuccess: input => dispatch(fetchFoodDataSuccess(input)),
-  userLogOut: () => dispatch(userLogOut())
+  userLogOut: () => dispatch(userLogOut()),
+  toggleProfileOpen: toggle => dispatch(toggleProfileOpen(toggle))
 });
 
-export default connect(null, mapDispatchToProps)(ImageAvatars);
+const mapStateToProps = state => ({
+  isProfileOpen: selectIsProfileOpen(state)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageAvatars);

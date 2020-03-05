@@ -1,6 +1,7 @@
 import React from "react";
 import IngredientList from "../../components/ingredient-list/IngredientList";
 import ImageRecognition from "../../components/image-recognition/ImageRecognition";
+
 import RingLoaderComponent from "../../components/ring-loader/ringloader";
 import { connect } from "react-redux";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
@@ -14,7 +15,9 @@ const HomePage = ({ isLoading }) => {
         <ImageLinkForm />
         <ImageRecognition />
       </div>
-      <div className='ingredient-list-container'>{isLoading ? <RingLoaderComponent /> : <IngredientList />}</div>
+      <div className="ingredient-list-container">
+        {isLoading ? <RingLoaderComponent /> : <IngredientList />}
+      </div>
     </div>
   );
 };

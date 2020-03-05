@@ -5,11 +5,11 @@ import { selectIsLoggedIn } from "../../Redux/user/user.selectors";
 import ImageAvatars from "../profile/profile-icon.component";
 import "./navigation.css";
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ isLoggedIn, setProfileOpen }) => {
   return (
     <nav className="navigation">
       <Logo />
-      <div className="ph3">{isLoggedIn ? <ImageAvatars /> : null}</div>
+      <div className="ph3">{isLoggedIn ? <ImageAvatars setProfileOpen={setProfileOpen}/> : null}</div>
     </nav>
   );
 };

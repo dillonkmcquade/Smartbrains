@@ -9,7 +9,8 @@ const INITIAL_STATE = {
   },
   isLoading: false,
   errorMessage: undefined,
-  isLoggedIn: false
+  isLoggedIn: false,
+  isProfileOpen: false
 };
 
 const foodReducer = (state = INITIAL_STATE, action) => {
@@ -63,6 +64,11 @@ const foodReducer = (state = INITIAL_STATE, action) => {
           email: "",
           joined: ""
         }
+      };
+      case UserActionTypes.TOGGLE_PROFILE_OPEN:
+      return {
+        ...state,
+        isProfileOpen: action.payload
       };
     default:
       return state;

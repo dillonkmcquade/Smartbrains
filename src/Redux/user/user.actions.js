@@ -5,6 +5,11 @@ export const setLoading = action => ({
   payload: action
 })
 
+export const toggleProfileOpen = action => ({
+  type: UserActionTypes.TOGGLE_PROFILE_OPEN,
+  payload: action
+})
+
 export const registerUser = user => ({
   type: UserActionTypes.REGISTER_USER,
   payload: user

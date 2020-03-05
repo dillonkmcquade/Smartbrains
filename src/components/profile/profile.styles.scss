@@ -1,0 +1,50 @@
+.profile-modal {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(129, 126, 126, 0.9);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInAnimation ease .7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .profile {
+        width: 70%;
+        height: 80%;
+        background-color: white;
+        border: 2px solid gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 15px 10px 10px -10px rgba(0, 0, 0, 0.51);
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                margin: 10px;
+            }
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+    }
+}
