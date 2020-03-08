@@ -1,5 +1,8 @@
-.register-component {
-  @media screen and (max-width: 800px) {
-    width: 90vw;
+.register-container {
+  height: 90vh;
+  .register-component {
+    @media screen and (max-width: 800px) {
+      width: 90vw;
+    }
   }
 }
