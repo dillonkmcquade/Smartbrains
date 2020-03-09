@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   isProfileOpen: false
 };
 
-const foodReducer = (state = INITIAL_STATE, action) => {
+const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserActionTypes.FETCH_USER_START:
       return {
@@ -65,7 +65,7 @@ const foodReducer = (state = INITIAL_STATE, action) => {
           joined: ""
         }
       };
-      case UserActionTypes.TOGGLE_PROFILE_OPEN:
+    case UserActionTypes.TOGGLE_PROFILE_OPEN:
       return {
         ...state,
         isProfileOpen: action.payload
@@ -75,4 +75,4 @@ const foodReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default foodReducer;
+export default userReducer;

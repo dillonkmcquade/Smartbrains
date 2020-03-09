@@ -3,12 +3,12 @@ import { UserActionTypes } from "./user.types";
 export const setLoading = action => ({
   type: UserActionTypes.SET_LOADING,
   payload: action
-})
+});
 
 export const toggleProfileOpen = action => ({
   type: UserActionTypes.TOGGLE_PROFILE_OPEN,
   payload: action
-})
+});
 
 export const registerUser = user => ({
   type: UserActionTypes.REGISTER_USER,
@@ -38,7 +38,7 @@ export const fetchUserStartAsync = credentials => {
   return dispatch => {
     dispatch(fetchUserStart());
 
-    return fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
+    return fetch("http://localhost:3000/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -50,7 +50,6 @@ export const fetchUserStartAsync = credentials => {
       .then(data => {
         if (data.id) {
           dispatch(fetchUserSuccess(data));
-          
         }
       })
       .catch(err => dispatch(fetchUserFailure(err.message)));

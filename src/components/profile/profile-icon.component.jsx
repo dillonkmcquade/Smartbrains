@@ -47,36 +47,38 @@ const ImageAvatars = ({
   };
 
   return (
-    <div className={classes.root}>
-      <Avatar
-        alt="avatar"
-        src="/broken-image.jpg"
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        size="large"
-      >
-        <PersonIcon />
-      </Avatar>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={() => handleProfileButton()}>Profile</MenuItem>
-        <MenuItem
-          onClick={() => {
-            userLogOut();
-            updateImageUrl("");
-            fetchFoodDataSuccess("");
-          }}
+    
+      <div className={classes.root}>
+        <Avatar
+          alt="avatar"
+          src="/broken-image.jpg"
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          size="large"
         >
-          Logout
-        </MenuItem>
-      </Menu>
-    </div>
+          <PersonIcon />
+        </Avatar>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={() => handleProfileButton()}>Profile</MenuItem>
+          <MenuItem
+            onClick={() => {
+              userLogOut();
+              updateImageUrl("");
+              fetchFoodDataSuccess("");
+            }}
+          >
+            Logout
+          </MenuItem>
+        </Menu>
+      </div>
+    
   );
 };
 

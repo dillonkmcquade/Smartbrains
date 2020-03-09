@@ -9,8 +9,8 @@
   border: 1px solid gray;
   text-align: center;
   height: 80vh;
-  box-shadow: 3px 2px 2px 1px gray;
-  overflow: scroll;
+  box-shadow: 15px 10px 10px -10px rgb(104, 102, 102);
+  overflow-Y: scroll;
 
   @media screen and (max-width: 800px) {
     width: 90vw;
