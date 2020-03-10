@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Navigation from "./components/navigation/Navigation";
 import {
@@ -11,9 +11,43 @@ import Register from "./components/Register/Register";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Footer from "./components/footer/footer.component";
 import Modal from "./components/modal/modal.js";
-import Profile from './components/profile/profile.component';
+import Profile from "./components/profile/profile.component";
+import { registerUser } from "./Redux/user/user.actions";
 
-const App = ({ isLoggedIn, isProfileOpen }) => {
+const App = ({ isProfileOpen, registerUser }) => {
+  const token = window.sessionStorage.getItem("token");
+  useEffect(() => {
+    const token = window.sessionStorage.getItem("token");
+    if (token) {
+      fetch("http://localhost:3000/signin", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.id) {
+            fetch(`http://localhost:3000/profile/${data.id}`, {
+              method: "get",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: token
+              }
+            })
+              .then(response => response.json())
+              .then(user => {
+                if (user && user.email) {
+                  registerUser(user);
+                }
+              })
+              .catch(console.log);
+          }
+        })
+        .catch(console.log);
+    }
+  }, [registerUser]);
   return (
     <div className="App">
       <Navigation />
@@ -21,17 +55,15 @@ const App = ({ isLoggedIn, isProfileOpen }) => {
         <Route
           exact
           path="/"
-          render={() => (isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />)}
+          render={() => (token ? <Redirect to="/homepage" /> : <SignIn />)}
         />
         <Route
           path="/register"
-          render={() =>
-            isLoggedIn ? <Redirect to="/homepage" /> : <Register />
-          }
+          render={() => (token ? <Redirect to="/homepage" /> : <Register />)}
         />
         <Route
           path="/homepage"
-          render={() => (isLoggedIn ? <HomePage /> : <Redirect to="/" />)}
+          render={() => (token ? <HomePage /> : <Redirect to="/" />)}
         />
       </Switch>
       {isProfileOpen ? (
@@ -49,4 +81,8 @@ const mapStateToProps = state => ({
   isProfileOpen: selectIsProfileOpen(state)
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  registerUser: user => dispatch(registerUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

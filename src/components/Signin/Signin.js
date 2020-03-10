@@ -13,6 +13,8 @@ const Signin = ({ fetchUserStartAsync, isLoading }) => {
     email: signInEmail,
     password: signInPassword
   };
+
+  
   if (isLoading) {
     return <RingLoaderComponent />;
   } else {

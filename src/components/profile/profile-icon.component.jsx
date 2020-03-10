@@ -46,39 +46,36 @@ const ImageAvatars = ({
     handleClose();
   };
 
+  const handleLogOut = () => {
+    window.sessionStorage.removeItem("token");
+    userLogOut();
+    updateImageUrl("");
+    fetchFoodDataSuccess("");
+  };
+
   return (
-    
-      <div className={classes.root}>
-        <Avatar
-          alt="avatar"
-          src="/broken-image.jpg"
-          aria-controls="simple-menu"
-          aria-haspopup="true"
-          onClick={handleClick}
-          size="large"
-        >
-          <PersonIcon />
-        </Avatar>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={() => handleProfileButton()}>Profile</MenuItem>
-          <MenuItem
-            onClick={() => {
-              userLogOut();
-              updateImageUrl("");
-              fetchFoodDataSuccess("");
-            }}
-          >
-            Logout
-          </MenuItem>
-        </Menu>
-      </div>
-    
+    <div className={classes.root}>
+      <Avatar
+        alt="avatar"
+        src="/broken-image.jpg"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+        size="large"
+      >
+        <PersonIcon />
+      </Avatar>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={() => handleProfileButton()}>Profile</MenuItem>
+        <MenuItem onClick={() => handleLogOut()}>Logout</MenuItem>
+      </Menu>
+    </div>
   );
 };
 
