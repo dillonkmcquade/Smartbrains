@@ -36,8 +36,8 @@ export const fetchUserFailure = error => ({
 export const fetchUserStartAsync = credentials => {
   // used in sign-in component to communicate with server for authentication
   const saveAuthTokenInSession = token => {
-    window.sessionStorage.setItem('token', token);
-  }
+    window.sessionStorage.setItem("token", token);
+  };
   return dispatch => {
     dispatch(fetchUserStart());
 
@@ -51,22 +51,22 @@ export const fetchUserStartAsync = credentials => {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.userId && data.success === 'true') {
+        if (data.userId && data.success === "true") {
           saveAuthTokenInSession(data.token);
           return fetch(`http://localhost:3000/profile/${data.userId}`, {
-              method: "get",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: data.token
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: data.token
+            }
+          })
+            .then(response => response.json())
+            .then(user => {
+              if (user && user.email) {
+                return dispatch(fetchUserSuccess(user));
               }
             })
-              .then(response => response.json())
-              .then(user => {
-                if (user && user.email) {
-                  return dispatch(fetchUserSuccess(user))
-                }
-              })
-              .catch(console.log)
+            .catch(console.log);
         }
       })
       .catch(err => {

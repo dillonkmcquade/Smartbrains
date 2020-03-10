@@ -13,10 +13,10 @@ const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
   
 
   const changePassword = (data) => {
-    
+    const token = window.sessionStorage.getItem('token');
     fetch(`http://localhost:3000/profile/${user.id}`, {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({
         email: user.email,
         currentPassword: currentPassword,
@@ -24,12 +24,13 @@ const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
         confirmPassword: confirmPassword
       })
     })
-      .then(response => {
-        registerUser(...user, ...data);
-        toggleProfileOpen();
+      .then(response => response.json())
+      .then(user => {
+        console.log(user)
+        //registerUser(...user, ...data);
+        //toggleProfileOpen();
       })
-      .then(console.log('success'))
-      .catch(err => console.log('error changing password'))
+      .catch(console.log)
   };
   
   return (

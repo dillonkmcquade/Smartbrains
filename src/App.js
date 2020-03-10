@@ -14,7 +14,7 @@ import Modal from "./components/modal/modal.js";
 import Profile from "./components/profile/profile.component";
 import { registerUser } from "./Redux/user/user.actions";
 
-const App = ({ isProfileOpen, registerUser }) => {
+const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
   const token = window.sessionStorage.getItem("token");
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
@@ -23,7 +23,7 @@ const App = ({ isProfileOpen, registerUser }) => {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          Authorization: token
+          "Authorization": token
         }
       })
         .then(response => response.json())
@@ -33,7 +33,7 @@ const App = ({ isProfileOpen, registerUser }) => {
               method: "get",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: token
+                "Authorization": token
               }
             })
               .then(response => response.json())
@@ -55,7 +55,7 @@ const App = ({ isProfileOpen, registerUser }) => {
         <Route
           exact
           path="/"
-          render={() => (token ? <Redirect to="/homepage" /> : <SignIn />)}
+          render={() => (token && isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />)}
         />
         <Route
           path="/register"

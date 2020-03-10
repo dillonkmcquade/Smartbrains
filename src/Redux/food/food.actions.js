@@ -24,11 +24,12 @@ export const fetchFoodDataFailure = errorMessage => ({
 });
 
 export const fetchFoodDataStartAsync = input => {
+  const token = window.sessionStorage.getItem("token");
   return dispatch => {
     dispatch(fetchFoodDataStart());
     return fetch("http://localhost:3000/imagedata", {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({
         input: input
       })
