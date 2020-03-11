@@ -29,13 +29,16 @@ const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
         .then(response => response.json())
         .then(data => {
           if (data && data.id) {
-            fetch(`https://fierce-mountain-50317.herokuapp.com/${data.id}`, {
-              method: "get",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: token
+            fetch(
+              `https://fierce-mountain-50317.herokuapp.com/profile/${data.id}`,
+              {
+                method: "get",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: token
+                }
               }
-            })
+            )
               .then(response => response.json())
               .then(user => {
                 if (user && user.email) {
