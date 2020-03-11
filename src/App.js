@@ -19,21 +19,21 @@ const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
     if (token) {
-      fetch("http://localhost:3000/signin", {
+      fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token
+          Authorization: token
         }
       })
         .then(response => response.json())
         .then(data => {
           if (data && data.id) {
-            fetch(`http://localhost:3000/profile/${data.id}`, {
+            fetch(`https://fierce-mountain-50317.herokuapp.com/${data.id}`, {
               method: "get",
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": token
+                Authorization: token
               }
             })
               .then(response => response.json())
@@ -55,7 +55,9 @@ const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
         <Route
           exact
           path="/"
-          render={() => (token && isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />)}
+          render={() =>
+            token && isLoggedIn ? <Redirect to="/homepage" /> : <SignIn />
+          }
         />
         <Route
           path="/register"
