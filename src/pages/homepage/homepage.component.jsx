@@ -1,22 +1,32 @@
-import React from "react";
-import IngredientList from "../../components/ingredient-list/IngredientList";
-import ImageRecognition from "../../components/image-recognition/ImageRecognition";
-
+import React, { lazy, Suspense } from "react";
 import RingLoaderComponent from "../../components/ring-loader/ringloader";
 import { connect } from "react-redux";
 import { selectIsLoading } from "../../Redux/food/food.selectors";
-import ImageLinkForm from "../../components/image-link-form/ImageLinkForm";
 import "./homepage.styles.scss";
+
+const IngredientList = lazy(() =>
+  import("../../components/ingredient-list/IngredientList")
+);
+const ImageRecognition = lazy(() =>
+  import("../../components/image-recognition/ImageRecognition")
+);
+const ImageLinkForm = lazy(() =>
+  import("../../components/image-link-form/ImageLinkForm")
+);
 
 const HomePage = ({ isLoading }) => {
   return (
     <div className="homepage">
       <div className="image-form">
-        <ImageLinkForm />
-        <ImageRecognition />
+        <Suspense fallback={<RingLoaderComponent />}>
+          <ImageLinkForm />
+          <ImageRecognition />
+        </Suspense>
       </div>
       <div className="ingredient-list-container">
-        {isLoading ? <RingLoaderComponent /> : <IngredientList />}
+        <Suspense fallback={<RingLoaderComponent />}>
+          <IngredientList />
+        </Suspense>
       </div>
     </div>
   );
