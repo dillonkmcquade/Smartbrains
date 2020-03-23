@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./profile.styles.scss";
 import { connect } from "react-redux";
 import { selectIsProfileOpen, selectUser2 } from "../../Redux/user/user.selectors";
-import { toggleProfileOpen, registerUser } from "../../Redux/user/user.actions";
+import { toggleProfileOpen } from "../../Redux/user/user.actions";
 import PersonIcon from "@material-ui/icons/Person";
 
 const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
