@@ -5,13 +5,15 @@ import { registerUser, setLoading } from "../../Redux/user/user.actions";
 import RingLoaderComponent from "../ring-loader/ringloader";
 import { selectIsLoading } from "../../Redux/user/user.selectors";
 
-const Register = ({ registerUser, setLoading, isLoading }) => {
+const Register = ({ registerUser, isLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const saveAuthTokenInSession = token => {
+    window.sessionStorage.setItem("token", token);
+  };
 
   const onSubmitRegister = () => {
-    setLoading(true);
     fetch("https://fierce-mountain-50317.herokuapp.com/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -23,20 +25,37 @@ const Register = ({ registerUser, setLoading, isLoading }) => {
     })
       .then(response => response.json())
       .then(user => {
-        if (user.id) {
-          registerUser(user);
-          setLoading(false);
-        } else {
-          return;
+        console.log(user);
+        if (user.userId && user.token) {
+          saveAuthTokenInSession(user.token);
+          fetch(
+            `https://fierce-mountain-50317.herokuapp.com/profile/${user.userId}`,
+            {
+              method: "get",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: user.token
+              }
+            }
+          )
+            .then(response => response.json())
+            .then(user => {
+              if (user && user.email) {
+                registerUser(user);
+              }
+            })
+            .catch(console.log);
         }
       })
-      .catch(console.log("error registering user"));
+      .catch(err => {
+        console.log("error registering user");
+      });
   };
   if (isLoading) {
     return <RingLoaderComponent />;
   } else {
     return (
-      <div className='register-container'>
+      <div className="register-container">
         <article className="mw6 register-component center bg-white br3 pa3 pa4-ns mv3 ba shadow-5 bw3 b--light-green">
           <main className="pa4 black-80">
             <div className="measure">
