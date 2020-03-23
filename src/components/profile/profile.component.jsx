@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./profile.styles.scss";
 import { connect } from "react-redux";
-import { selectIsProfileOpen, selectUser2 } from "../../Redux/user/user.selectors";
+import {
+  selectIsProfileOpen,
+  selectUser2
+} from "../../Redux/user/user.selectors";
 import { toggleProfileOpen } from "../../Redux/user/user.actions";
 import PersonIcon from "@material-ui/icons/Person";
 
@@ -10,11 +13,10 @@ const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  
+  const changePassword = data => {
+    const token = window.sessionStorage.getItem("token");
 
-  const changePassword = (data) => {
-    const token = window.sessionStorage.getItem('token');
-    fetch(`http://localhost:3000/profile/${user.id}`, {
+    fetch(`https://fierce-mountain-50317.herokuapp.com/profile/${user.id}`, {
       method: "post",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({
@@ -26,13 +28,13 @@ const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
     })
       .then(response => response.json())
       .then(user => {
-        console.log(user)
-        //registerUser(...user, ...data);
+        console.log(user);
+        //registerUser(...data, user);
         //toggleProfileOpen();
       })
-      .catch(console.log)
+      .catch(console.log("errrror!"));
   };
-  
+
   return (
     <div className="profile-modal">
       <div className="profile">

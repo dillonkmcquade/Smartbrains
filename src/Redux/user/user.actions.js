@@ -41,7 +41,7 @@ export const fetchUserStartAsync = credentials => {
   return dispatch => {
     dispatch(fetchUserStart());
 
-    return fetch("http://localhost:80/signin", {
+    return fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -54,7 +54,7 @@ export const fetchUserStartAsync = credentials => {
         if (data.userId && data.success === "true") {
           saveAuthTokenInSession(data.token);
           return fetch(
-            `http://localhost:80/profile/${data.userId}`,
+            `https://fierce-mountain-50317.herokuapp.com/profile/${data.userId}`,
             {
               method: "get",
               headers: {
