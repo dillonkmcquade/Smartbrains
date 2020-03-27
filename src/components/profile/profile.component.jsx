@@ -14,9 +14,10 @@ const Profile = ({ isProfileOpen, toggleProfileOpen, user }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const changePassword = data => {
+    
     const token = window.sessionStorage.getItem("token");
 
-    fetch(`https://fierce-mountain-50317.herokuapp.com/profile/${user.id}`, {
+    fetch(`http://localhost:80/profile/${user.id}`, {
       method: "post",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({

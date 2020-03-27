@@ -19,7 +19,7 @@ const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
     if (token) {
-      fetch("https://fierce-mountain-50317.herokuapp.com/signin", {
+      fetch("http://localhost:80/signin", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const App = ({ isLoggedIn, isProfileOpen, registerUser }) => {
         .then(data => {
           if (data && data.id) {
             fetch(
-              `https://fierce-mountain-50317.herokuapp.com/profile/${data.id}`,
+              `http://localhost:80/profile/${data.id}`,
               {
                 method: "get",
                 headers: {
