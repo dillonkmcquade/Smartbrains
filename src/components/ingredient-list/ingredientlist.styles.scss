@@ -1,16 +1,21 @@
+
 .ingredient-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
   width: 50vw;
-  background-color: rgb(190, 190, 248);
+  background-color: rgb(45, 49, 56);
   border-radius: 5px;
   border: 1px solid gray;
   text-align: center;
   height: 80vh;
-  box-shadow: 15px 10px 10px -10px rgb(104, 102, 102);
+  box-shadow: 15px 15px 15px -15px rgb(14, 13, 13);
   overflow-Y: scroll;
+  &::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
 
   @media screen and (max-width: 800px) {
     width: 90vw;
