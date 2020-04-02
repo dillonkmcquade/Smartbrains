@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import RingLoaderComponent from "../../components/ring-loader/ringloader";
+import LazySpinner from '../../components/lazySpinner/lazy-spinner.component';
 import "./homepage.styles.scss";
 
 const IngredientList = lazy(() =>
@@ -15,7 +15,7 @@ const ImageLinkForm = lazy(() =>
 const HomePage = () => {
 	return (
 		<div className="homepage">
-			<Suspense fallback={<RingLoaderComponent />}>
+			<Suspense fallback={<LazySpinner />}>
 				<ImageLinkForm />
 				<ImageRecognition />
 				<IngredientList />

@@ -3,7 +3,7 @@ import Logo from "../logo/Logo";
 import { connect } from "react-redux";
 import { selectIsLoggedIn } from "../../Redux/user/user.selectors";
 import ImageAvatars from "../profile/profile-icon.component";
-import "./navigation.css";
+import "./navigation.scss";
 
 const Navigation = ({ isLoggedIn }) => {
   return (

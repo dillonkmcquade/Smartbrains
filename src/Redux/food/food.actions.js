@@ -36,7 +36,6 @@ export const fetchFoodDataStartAsync = input => {
 		})
 			.then(response => response.json())
 			.then(foodData => {
-				console.log(foodData);
 				const ingredients = convertObjectToIngredientsList(foodData);
 				const imageUrl = convertObjectToImageUrl(foodData);
 				dispatch(fetchFoodDataSuccess(ingredients));

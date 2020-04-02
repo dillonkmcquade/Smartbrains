@@ -9,12 +9,12 @@ import * as serviceWorker from "./serviceWorker";
 import "tachyons";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("root")
+	<Provider store={store}>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</Provider>,
+	document.getElementById("root")
 );
 
 serviceWorker.register();

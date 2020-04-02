@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import RingLoaderComponent from "../ring-loader/ringloader";
+import LazySpinner from "../lazySpinner/lazy-spinner.component";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./signin.styles.scss";
-import { selectIsLoading } from "../../Redux/food/food.selectors";
+import { selectIsLoading } from "../../Redux/user/user.selectors";
 import { fetchUserStartAsync } from "../../Redux/user/user.actions";
 
 const Signin = ({ fetchUserStartAsync, isLoading }) => {
@@ -16,7 +16,7 @@ const Signin = ({ fetchUserStartAsync, isLoading }) => {
 
   
   if (isLoading) {
-    return <RingLoaderComponent />;
+    return <LazySpinner />;
   } else {
     return (
       <div className="sign-in-component">

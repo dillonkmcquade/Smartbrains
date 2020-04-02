@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchFoodDataStartAsync } from "../../Redux/food/food.actions";
 import "./imagelinkform.styles.scss";
+import RecentSearchDropdown from "../recent-search-dropdown/recent-search.component";
 
 const ImageLinkForm = ({ fetchFoodDataStartAsync }) => {
 	const [input, setInput] = useState("");
-  console.log(input);
+	const [recentSearch, saveSearch] = useState([]);
+	const handleSubmit = input => {
+		fetchFoodDataStartAsync(input);
+		saveSearch(recentSearch.concat(input));
+		console.log(recentSearch);
+	};
 	return (
 		<div className="image-link-form">
 			<p className="directions">
@@ -21,9 +27,10 @@ const ImageLinkForm = ({ fetchFoodDataStartAsync }) => {
 					onChange={event => setInput(event.target.value)}
 					required
 				/>
-				<div className="form-submit" onClick={() => fetchFoodDataStartAsync(input)}>
+				<div className="form-submit" onClick={() => handleSubmit(input)}>
 					Detect
 				</div>
+				<RecentSearchDropdown recentSearch={recentSearch} />
 			</form>
 		</div>
 	);

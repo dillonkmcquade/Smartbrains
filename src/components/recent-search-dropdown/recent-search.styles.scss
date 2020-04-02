@@ -1,0 +1,61 @@
+.recent-search-container {
+    padding-left: 10px;
+    .MuiSvgIcon-root {
+        cursor: pointer;
+        color: royalblue;
+        &:hover {
+            color: yellowgreen;
+        }
+    }
+    .dropdown-menu {
+        position: absolute;
+        margin-left: -175px;
+        height: 200px;
+        width: 200px;
+        background-color: gray;
+        border: 2px solid darkslategray;
+        border-radius: 5px;
+        color: black;
+        overflow-y: scroll;
+
+        @media screen and (min-width: 1600px) {
+            width: 400px;
+            height: 400px;
+        }
+        -webkit-animation-name: fadeInLeft;
+        animation-name: fadeInLeft;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        
+
+        .dropdown-item {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: space-evenly;
+            color: black;
+            height: auto;
+            overflow-x: hidden;
+            cursor: pointer;
+            border-bottom: 2px solid black;
+            &:hover {
+                background-color: rgb(107, 101, 101);
+            }
+
+            .recent-image {
+                height: 50px;
+                width: 50px;
+                padding-left: 10px;
+            }
+        }
+    }
+}
+@keyframes fadeInLeft {
+	0% {
+        height: 0px;
+	}
+	100% {
+	}
+}
